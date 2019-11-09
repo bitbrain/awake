@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.forceExit = false;
-		config.width = 1920;
-		config.height = 1080;
+		config.width = 800;
+		config.height = 600;
 		config.resizable = false;
 		config.title = "project: awake";
 		new LwjglApplication(new AwakeGame(), config);
