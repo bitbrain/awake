@@ -9,6 +9,8 @@ import com.punchbrain.awake.input.intro.IntroKeyboardInputAdapter;
 import com.punchbrain.awake.model.Player;
 import de.bitbrain.braingdx.GameContext;
 import de.bitbrain.braingdx.graphics.GameObjectRenderManager;
+import de.bitbrain.braingdx.graphics.lighting.PointLightBehavior;
+import de.bitbrain.braingdx.graphics.pipeline.layers.RenderPipeIds;
 import de.bitbrain.braingdx.graphics.renderer.SpriteRenderer;
 import de.bitbrain.braingdx.input.InputManager;
 import de.bitbrain.braingdx.physics.PhysicsManager;
@@ -32,9 +34,9 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
    protected void onCreate(GameContext context) {
       setBackgroundColor(Colors.BACKGROUND);
 
-      setupGraphics(context.getRenderManager());
       setupWorld(context);
-      setupPhysics(context.getPhysicsManager());
+      setupGraphics(context);
+      setupPhysics(context);
       setupInput(context.getInputManager());
    }
 
@@ -43,12 +45,17 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
       inputManager.register(new IntroKeyboardInputAdapter(this, player));
    }
 
-   private void setupGraphics(GameObjectRenderManager renderManager) {
-      renderManager.register(PLAYER.name(), new SpriteRenderer(Assets.Textures.PLAYER));
+   private void setupGraphics(GameContext context) {
+      context.getRenderManager().register(PLAYER.name(), new SpriteRenderer(Assets.Textures.PLAYER));
+      context.getLightingManager().setAmbientLight(Colors.BACKGROUND);
+      context.getBehaviorManager().apply(new PointLightBehavior(Colors.FOREGROUND, 256f, context.getLightingManager()), playerObject);
+
+      context.getRenderPipeline().addEffects(RenderPipeIds.WORLD_UI, context.getShaderManager().createBloomEffect());
+
    }
 
-   private void setupPhysics(PhysicsManager physicsManager) {
-      physicsManager.setGravity(0f, -125);
+   private void setupPhysics(GameContext context) {
+      context.getPhysicsManager().setGravity(0f, -1);
       BodyDef playerBodyDef = new BodyDef();
       playerBodyDef.type = BodyDef.BodyType.DynamicBody;
       playerBodyDef.position.set(playerObject.getLeft(), playerObject.getTop());
@@ -57,7 +64,7 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
       shape.setAsBox(32, 64f);
       fixtureDef.shape = shape;
       fixtureDef.density = 100f;
-      Body body = physicsManager.attachBody(playerBodyDef, fixtureDef, playerObject);
+      Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, playerObject);
       this.player = new Player(playerObject, body);
    }
 

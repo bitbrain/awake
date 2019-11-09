@@ -6,6 +6,6 @@ import static com.badlogic.gdx.graphics.Color.valueOf;
 
 public interface Colors {
 
-   Color BACKGROUND = valueOf("000000");
-   Color FOREGROUND = valueOf("ffffff");
+   Color BACKGROUND = valueOf("191325");
+   Color FOREGROUND = valueOf("df9f6d");
 }

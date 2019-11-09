@@ -15,10 +15,10 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="collision" x="-0.25" y="176.5" width="383.75" height="15.5"/>
+  <object id="4" type="collision" x="1" y="175.75" width="381.5" height="15"/>
  </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="1" type="PLAYER" x="79.75" y="132.25">
+  <object id="1" type="PLAYER" x="78.25" y="165.5">
    <point/>
   </object>
   <object id="2" x="-64.5" y="113.25">
