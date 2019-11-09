@@ -3,11 +3,11 @@ package com.punchbrain.awake.assets;
 public interface Assets {
 
    interface Textures {
-      // TODO
+      String PLAYER = "textures/player.png";
    }
 
    interface TiledMaps {
-      // TODO
+      String BOYS_ROOM = "tmx/boys-room.tmx";
    }
 
    interface Music {
