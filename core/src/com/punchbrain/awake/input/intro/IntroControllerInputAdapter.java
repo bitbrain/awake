@@ -17,4 +17,9 @@ public class IntroControllerInputAdapter extends ControllerAdapter {
       // TODO
       return super.buttonDown(controller, buttonIndex);
    }
+
+   @Override
+   public boolean buttonUp(Controller controller, int buttonIndex) {
+      return super.buttonUp(controller, buttonIndex);
+   }
 }

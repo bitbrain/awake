@@ -24,13 +24,24 @@ public class IntroKeyboardInputAdapter extends InputAdapter {
       }
       if (keycode == Input.Keys.A || keycode == Input.Keys.LEFT) {
          player.moveLeft();
+         return true;
       }
       if (keycode == Input.Keys.D || keycode == Input.Keys.RIGHT) {
          player.moveRight();
+         return true;
       }
       if (keycode == Input.Keys.SPACE) {
          player.jump();
+         return true;
       }
-      return true;
+      return false;
+   }
+
+   @Override
+   public boolean keyUp(int keycode) {
+      if (keycode == Input.Keys.A || keycode == Input.Keys.W || keycode == Input.Keys.S || keycode == Input.Keys.D) {
+         player.stop();
+      }
+      return false;
    }
 }

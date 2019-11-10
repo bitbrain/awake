@@ -8,6 +8,8 @@ public interface Assets {
 
    interface TiledMaps {
       String BOYS_ROOM = "tmx/boys-room.tmx";
+      String HALLWAY = "tmx/hallway.tmx";
+      String BATHROOM = "tmx/bathroom.tmx";
    }
 
    interface Music {

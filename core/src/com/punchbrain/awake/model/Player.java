@@ -14,16 +14,20 @@ public class Player {
       this.body = body;
    }
 
+   public void stop() {
+      body.setLinearVelocity(0f, 0f);
+   }
 
    public void moveLeft() {
-      body.applyForce(-1, 0f, 0f, 0f, true);
+      body.setLinearVelocity(-50f, 0);
    }
 
    public void moveRight() {
-      body.applyForce(1, 0f, 0f, 0f, true);
+      body.setLinearVelocity(50f, 0);
    }
 
    public void jump() {
-
+      // TODO
+      body.applyForceToCenter(0f,64, true);
    }
 }

@@ -55,7 +55,7 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
    }
 
    private void setupPhysics(GameContext context) {
-      context.getPhysicsManager().setGravity(0f, -1);
+      context.getPhysicsManager().setGravity(0f, -98);
       BodyDef playerBodyDef = new BodyDef();
       playerBodyDef.type = BodyDef.BodyType.DynamicBody;
       playerBodyDef.position.set(playerObject.getLeft(), playerObject.getTop());
@@ -64,6 +64,7 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
       shape.setAsBox(32, 64f);
       fixtureDef.shape = shape;
       fixtureDef.density = 100f;
+
       Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, playerObject);
       this.player = new Player(playerObject, body);
    }
