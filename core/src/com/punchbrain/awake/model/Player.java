@@ -19,11 +19,11 @@ public class Player {
    }
 
    public void moveLeft() {
-      body.setLinearVelocity(-50f, 0);
+      body.setLinearVelocity(-150f, 0);
    }
 
    public void moveRight() {
-      body.setLinearVelocity(50f, 0);
+      body.setLinearVelocity(150f, 0);
    }
 
    public void jump() {
