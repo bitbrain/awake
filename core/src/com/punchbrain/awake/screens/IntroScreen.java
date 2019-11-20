@@ -53,7 +53,8 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
    private void setupGraphics(GameContext2D context) {
       context.getRenderManager().register(PLAYER.name(), new SpriteRenderer(Assets.Textures.PLAYER));
       LightingConfig lightingConfig = new LightingConfig();
-      lightingConfig.rays(500);
+      lightingConfig.rays(200);
+      lightingConfig.blur(false);
       context.getLightingManager().setConfig(lightingConfig);
       context.getLightingManager().setAmbientLight(Colors.BACKGROUND);
       context.getBehaviorManager().apply(new PointLightBehavior(Colors.FOREGROUND, 256f, context.getLightingManager()), playerObject);
@@ -109,7 +110,7 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
             body.createFixture(fixture);
             shape.dispose();
          } else if (LIGHT.isTypeOf(object)) {
-            context.getLightingManager().addPointLight(UUID.randomUUID().toString(), new Vector2(object.getLeft(), object.getTop()), 200f, Colors.FOREGROUND);
+            context.getLightingManager().addPointLight(UUID.randomUUID().toString(), new Vector2(object.getLeft(), object.getTop()), 100f, Colors.FOREGROUND);
          }
       }
    }

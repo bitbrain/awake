@@ -19,11 +19,11 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="COLLISION" x="0.329545" y="178.046" width="383.398" height="13.9886"/>
-  <object id="11" type="COLLISION" x="-1.699" y="0.7557" width="4.898" height="177.239"/>
+  <object id="4" type="COLLISION" x="0.579545" y="177.296" width="383.398" height="13.9886"/>
+  <object id="11" type="COLLISION" x="1.301" y="-0.971573" width="4.898" height="177.239"/>
  </objectgroup>
  <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="51.7045" y="173.773">
+  <object id="1" type="PLAYER" x="49.3409" y="168.591">
    <point/>
   </object>
   <object id="5" type="TELEPORT" x="362.011" y="91.7955" width="15" height="86.5">
