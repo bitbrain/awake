@@ -24,7 +24,7 @@ allprojects {
         roboVMVersion = '2.3.7'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
-        brainGdxVersion = '0.5.17'
+        brainGdxVersion = '0.6.2'
     }
 
     repositories {
@@ -43,7 +43,7 @@ project(":desktop") {
 
     dependencies {
         implementation project(":core")
-        implementation "io.github.bitbrain:braingdx-core:$brainGdxVersion"
+        implementation "io.github.bitbrain:braingdx-2d:$brainGdxVersion"
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -58,7 +58,7 @@ project(":core") {
 
 
     dependencies {
-        implementation "io.github.bitbrain:braingdx-core:$brainGdxVersion"
+        implementation "io.github.bitbrain:braingdx-2d:$brainGdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"

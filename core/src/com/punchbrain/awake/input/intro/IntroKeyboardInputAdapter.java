@@ -5,8 +5,11 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.punchbrain.awake.model.Player;
 import com.punchbrain.awake.screens.IntroScreen;
+import de.bitbrain.braingdx.util.Updateable;
 
-public class IntroKeyboardInputAdapter extends InputAdapter {
+import static com.badlogic.gdx.Input.Keys.*;
+
+public class IntroKeyboardInputAdapter extends InputAdapter implements Updateable {
 
    private final IntroScreen screen;
    private final Player player;
@@ -22,25 +25,29 @@ public class IntroKeyboardInputAdapter extends InputAdapter {
          Gdx.app.exit();
          return true;
       }
-      if (keycode == Input.Keys.A || keycode == Input.Keys.LEFT) {
-         player.moveLeft();
-         return true;
-      }
-      if (keycode == Input.Keys.D || keycode == Input.Keys.RIGHT) {
-         player.moveRight();
-         return true;
-      }
-      if (keycode == Input.Keys.SPACE) {
-         player.jump();
-         return true;
-      }
       return false;
    }
 
    @Override
-   public boolean keyUp(int keycode) {
-      if (keycode == Input.Keys.A || keycode == Input.Keys.W || keycode == Input.Keys.S || keycode == Input.Keys.D) {
+   public void update(float delta) {
+      if (areKeysPressed(A, LEFT)) {
+         player.moveLeft();
+      } else if (areKeysPressed(D, RIGHT)) {
+         player.moveRight();
+      } else {
          player.stop();
+      }
+      if (areKeysPressed(SPACE)) {
+         player.jump();
+      }
+   }
+
+   private boolean areKeysPressed(int ... keys) {
+      for (int key : keys) {
+         if (!Gdx.input.isKeyPressed(key)) {
+            continue;
+         }
+         return true;
       }
       return false;
    }

@@ -15,7 +15,8 @@ public class AwakeGame extends BrainGdxGame {
 	}
 
 	@Override
-	protected AbstractScreen<?> getInitialScreen() {
+	protected AbstractScreen<?, ?> getInitialScreen() {
 		return new IntroScreen(this);
 	}
+
 }

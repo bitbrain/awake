@@ -13,21 +13,21 @@ import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.input.intro.IntroControllerInputAdapter;
 import com.punchbrain.awake.input.intro.IntroKeyboardInputAdapter;
 import com.punchbrain.awake.model.Player;
-import de.bitbrain.braingdx.GameContext;
-import de.bitbrain.braingdx.graphics.GameCamera;
-import de.bitbrain.braingdx.graphics.GameObjectRenderManager;
-import de.bitbrain.braingdx.graphics.lighting.LightingManager;
+import de.bitbrain.braingdx.context.GameContext2D;
+import de.bitbrain.braingdx.graphics.lighting.LightingConfig;
 import de.bitbrain.braingdx.graphics.lighting.PointLightBehavior;
 import de.bitbrain.braingdx.graphics.pipeline.layers.RenderPipeIds;
 import de.bitbrain.braingdx.graphics.renderer.SpriteRenderer;
 import de.bitbrain.braingdx.input.InputManager;
-import de.bitbrain.braingdx.screens.AbstractScreen;
+import de.bitbrain.braingdx.screen.BrainGdxScreen2D;
 import de.bitbrain.braingdx.world.GameObject;
+
+import java.util.UUID;
 
 import static com.punchbrain.awake.GameObjectType.*;
 import static com.punchbrain.awake.util.TmxUtil.loadTiledMap;
 
-public class IntroScreen extends AbstractScreen<AwakeGame> {
+public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private GameObject playerObject;
    private Player player;
@@ -37,9 +37,8 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
    }
 
    @Override
-   protected void onCreate(GameContext context) {
-      setBackgroundColor(Colors.BACKGROUND);
-
+   protected void onCreate(GameContext2D context) {
+      context.setBackgroundColor(Colors.BACKGROUND);
       setupWorld(context);
       setupGraphics(context);
       setupPhysics(context);
@@ -51,9 +50,9 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
       inputManager.register(new IntroKeyboardInputAdapter(this, player));
    }
 
-   private void setupGraphics(GameContext context) {
+   private void setupGraphics(GameContext2D context) {
       context.getRenderManager().register(PLAYER.name(), new SpriteRenderer(Assets.Textures.PLAYER));
-      LightingManager.LightingConfig lightingConfig = new LightingManager.LightingConfig();
+      LightingConfig lightingConfig = new LightingConfig();
       lightingConfig.rays(500);
       context.getLightingManager().setConfig(lightingConfig);
       context.getLightingManager().setAmbientLight(Colors.BACKGROUND);
@@ -63,23 +62,26 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
 
    }
 
-   private void setupPhysics(GameContext context) {
+   private void setupPhysics(GameContext2D context) {
       context.getPhysicsManager().setGravity(0f, -98);
 
       BodyDef playerBodyDef = new BodyDef();
       playerBodyDef.type = BodyDef.BodyType.DynamicBody;
-      playerBodyDef.position.set(playerObject.getLeft(), playerObject.getTop());
+      playerBodyDef.position.set(playerObject.getLeft() + playerObject.getWidth() / 2f, playerObject.getTop() + playerObject.getHeight() / 2f);
+      playerBodyDef.fixedRotation = true;
       FixtureDef fixtureDef = new FixtureDef();
       PolygonShape shape = new PolygonShape();
-      shape.setAsBox(16, 32);
+      shape.setAsBox(playerObject.getWidth() / 2f, playerObject.getHeight() / 2f);
       fixtureDef.shape = shape;
-      fixtureDef.density = 100f;
-      playerObject.setOffset(-16,-32);
+      fixtureDef.density = 0.00001f;
+      fixtureDef.friction = 0f;
+      fixtureDef.restitution = 0f;
+
       Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, playerObject);
       this.player = new Player(playerObject, body);
    }
 
-   private void setupWorld(GameContext context) {
+   private void setupWorld(GameContext2D context) {
       loadTiledMap(Assets.TiledMaps.BOYS_ROOM, context);
 
       for (GameObject object : context.getGameWorld().getObjects()) {
@@ -97,15 +99,17 @@ public class IntroScreen extends AbstractScreen<AwakeGame> {
 
             //shape
             PolygonShape shape = new PolygonShape();
-            shape.setAsBox(object.getWidth() / 2, object.getHeight() / 2);
+            shape.setAsBox(object.getWidth() / 2f, object.getHeight() / 2f);
 
             //fixture
             FixtureDef fixture = new FixtureDef();
-            fixture.friction = 0.3f;
+            fixture.friction = 0f;
             fixture.shape = shape;
 
             body.createFixture(fixture);
             shape.dispose();
+         } else if (LIGHT.isTypeOf(object)) {
+            context.getLightingManager().addPointLight(UUID.randomUUID().toString(), new Vector2(object.getLeft(), object.getTop()), 200f, Colors.FOREGROUND);
          }
       }
    }

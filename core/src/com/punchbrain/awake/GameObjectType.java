@@ -5,10 +5,11 @@ import de.bitbrain.braingdx.world.GameObject;
 public enum GameObjectType {
    PLAYER,
    COLLISION,
-   TELEPORT;
+   TELEPORT,
+   LIGHT;
 
    public boolean isTypeOf(GameObject object) {
-      return this.name().equals(object.getType());
+      return object.getType() != null && this.name().equalsIgnoreCase(object.getType().toString());
    }
 
 }
