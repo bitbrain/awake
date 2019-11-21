@@ -12,6 +12,7 @@ import com.punchbrain.awake.Colors;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.input.intro.IntroControllerInputAdapter;
 import com.punchbrain.awake.input.intro.IntroKeyboardInputAdapter;
+import com.punchbrain.awake.model.Circuit;
 import com.punchbrain.awake.model.Player;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.graphics.lighting.LightingConfig;
@@ -20,8 +21,12 @@ import de.bitbrain.braingdx.graphics.pipeline.layers.RenderPipeIds;
 import de.bitbrain.braingdx.graphics.renderer.SpriteRenderer;
 import de.bitbrain.braingdx.input.InputManager;
 import de.bitbrain.braingdx.screen.BrainGdxScreen2D;
+import de.bitbrain.braingdx.util.Hash;
 import de.bitbrain.braingdx.world.GameObject;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static com.punchbrain.awake.GameObjectType.*;
@@ -31,6 +36,8 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private GameObject playerObject;
    private Player player;
+   private List<Circuit> circuits;
+   private Map<GameObject, Circuit> flipSwitchToCircuitMap;
 
    public IntroScreen(AwakeGame game) {
       super(game);
@@ -85,6 +92,9 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
    private void setupWorld(GameContext2D context) {
       loadTiledMap(Assets.TiledMaps.BOYS_ROOM, context);
 
+      flipSwitchToCircuitMap = new HashMap<>();
+      Map<GameObject, GameObject> lampToFlipSwitch = new HashMap<>();
+
       for (GameObject object : context.getGameWorld().getObjects()) {
          if (PLAYER.isTypeOf(object)) {
             context.getGameCamera().setTrackingTarget(object);
@@ -109,9 +119,18 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
 
             body.createFixture(fixture);
             shape.dispose();
-         } else if (LIGHT.isTypeOf(object)) {
+         } if (LIGHT.isTypeOf(object)) {
             context.getLightingManager().addPointLight(UUID.randomUUID().toString(), new Vector2(object.getLeft(), object.getTop()), 100f, Colors.FOREGROUND);
+         } else if (FLIPSWITCH.isTypeOf(object)){
+            Object circitId = object.getAttribute("circuit");
+            //REGISTER TO MUTUAL HASHMAP
          }
+      }
+      for(GameObject obj : lampToFlipSwitch.keySet()){
+         GameObject flipSwitch = lampToFlipSwitch.get(obj);
+         Circuit circuit = new Circuit(obj, flipSwitch);
+         circuits.add(circuit);
+         flipSwitchToCircuitMap.put(flipSwitch, circuit);
       }
    }
 }

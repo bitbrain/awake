@@ -5,6 +5,8 @@ import de.bitbrain.braingdx.world.GameObject;
 public enum GameObjectType {
    PLAYER,
    COLLISION,
+   LAMP,
+   FLIPSWITCH,
    TELEPORT,
    LIGHT;
 
