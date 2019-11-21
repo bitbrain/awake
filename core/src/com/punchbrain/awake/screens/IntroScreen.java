@@ -94,6 +94,8 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
 
       flipSwitchToCircuitMap = new HashMap<>();
       Map<GameObject, GameObject> lampToFlipSwitch = new HashMap<>();
+      Map<String, GameObject[]> lampSwitchGrouper = new HashMap<>();
+      //[Lamp, Switch] in array
 
       for (GameObject object : context.getGameWorld().getObjects()) {
          if (PLAYER.isTypeOf(object)) {
@@ -121,16 +123,32 @@ public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
             shape.dispose();
          } if (LIGHT.isTypeOf(object)) {
             context.getLightingManager().addPointLight(UUID.randomUUID().toString(), new Vector2(object.getLeft(), object.getTop()), 100f, Colors.FOREGROUND);
-         } else if (FLIPSWITCH.isTypeOf(object)){
-            Object circitId = object.getAttribute("circuit");
-            //REGISTER TO MUTUAL HASHMAP
+         } if (FLIPSWITCH.isTypeOf(object)){
+            String circitId = (String) object.getAttribute("circuit");
+            GameObject[] group = lampSwitchGrouper.get(circitId);
+            if(group == null){
+               GameObject[] fill = {null, object};
+               lampSwitchGrouper.put(circitId, fill);
+            } else {
+               group[1] = object;
+            }
+         } else if (LAMP.isTypeOf(object)){
+            String circitId = (String) object.getAttribute("circuit");
+            GameObject[] group = lampSwitchGrouper.get(circitId);
+            if(group == null){
+               GameObject[] fill = {object, null};
+               lampSwitchGrouper.put(circitId, fill);
+            } else {
+               group[0] = object;
+            }
          }
       }
-      for(GameObject obj : lampToFlipSwitch.keySet()){
-         GameObject flipSwitch = lampToFlipSwitch.get(obj);
-         Circuit circuit = new Circuit(obj, flipSwitch);
+
+      for(String id : lampSwitchGrouper.keySet()){
+         GameObject[] group = lampSwitchGrouper.get(id);
+         Circuit circuit = new Circuit(group[0], group[1]);
          circuits.add(circuit);
-         flipSwitchToCircuitMap.put(flipSwitch, circuit);
+         flipSwitchToCircuitMap.put(group[1], circuit);
       }
    }
 }
