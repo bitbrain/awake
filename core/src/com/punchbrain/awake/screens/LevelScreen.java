@@ -3,6 +3,9 @@ package com.punchbrain.awake.screens;
 import com.punchbrain.awake.AwakeGame;
 import com.punchbrain.awake.Colors;
 import com.punchbrain.awake.assets.Assets;
+import com.punchbrain.awake.event.AwakeEventFactory;
+import com.punchbrain.awake.event.TeleportEvent;
+import com.punchbrain.awake.event.TeleportEventListener;
 import com.punchbrain.awake.input.intro.IntroControllerInputAdapter;
 import com.punchbrain.awake.input.intro.IntroKeyboardInputAdapter;
 import com.punchbrain.awake.tmx.CollisionInitialiser;
@@ -13,36 +16,52 @@ import de.bitbrain.braingdx.graphics.pipeline.layers.RenderPipeIds;
 import de.bitbrain.braingdx.graphics.renderer.SpriteRenderer;
 import de.bitbrain.braingdx.input.InputManager;
 import de.bitbrain.braingdx.screen.BrainGdxScreen2D;
+import de.bitbrain.braingdx.tmx.TiledMapContext;
 import de.bitbrain.braingdx.tmx.TiledMapEvents.OnLoadGameObjectEvent;
 
 import static com.punchbrain.awake.GameObjectType.PLAYER;
 import static com.punchbrain.awake.util.TmxUtil.loadTiledMap;
 
-public class IntroScreen extends BrainGdxScreen2D<AwakeGame> {
+public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private PlayerInitialiser playerInitialiser;
+   private final String targetSpawnId;
+   private final String tiledMapFile;
 
-   public IntroScreen(AwakeGame game) {
+   public LevelScreen(AwakeGame game, String tiledMapFile, String targetSpawnId) {
       super(game);
+      this.targetSpawnId = targetSpawnId;
+      this.tiledMapFile = tiledMapFile;
    }
+
+   public LevelScreen(AwakeGame game, String tiledMapFile) {
+      super(game);
+      this.targetSpawnId = null;
+      this.tiledMapFile = tiledMapFile;
+   }
+
 
    @Override
    protected void onCreate(GameContext2D context) {
       context.setBackgroundColor(Colors.BACKGROUND);
 
       setupEvents(context);
-
-      loadTiledMap(Assets.TiledMaps.BOYS_ROOM, context);
-
+      setupTiled(context);
       setupGraphics(context);
       setupPhysics(context);
       setupInput(context.getInputManager());
    }
 
+   private void setupTiled(GameContext2D context) {
+      TiledMapContext tmxContext = loadTiledMap(tiledMapFile, context);
+      tmxContext.setEventFactory(new AwakeEventFactory());
+   }
+
    private void setupEvents(GameContext2D context) {
       context.getEventManager().register(new CollisionInitialiser(context), OnLoadGameObjectEvent.class);
-      this.playerInitialiser = new PlayerInitialiser(context);
+      this.playerInitialiser = new PlayerInitialiser(context, targetSpawnId);
       context.getEventManager().register(playerInitialiser, OnLoadGameObjectEvent.class);
+      context.getEventManager().register(new TeleportEventListener(context, this), TeleportEvent.class);
    }
 
    private void setupInput(InputManager inputManager) {

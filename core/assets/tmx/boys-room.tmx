@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="12">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="12">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="32" columns="8">
   <image source="interior.png" width="256" height="128"/>
  </tileset>
@@ -19,20 +19,31 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="COLLISION" x="0.579545" y="177.296" width="383.398" height="13.9886"/>
-  <object id="11" type="COLLISION" x="1.301" y="-0.971573" width="4.898" height="177.239"/>
+  <object id="4" type="COLLISION" x="0.579545" y="177.296" width="383.398" height="13.9886">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="11" type="COLLISION" x="1.301" y="-0.971573" width="4.898" height="177.239">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="49.3409" y="168.591">
+  <object id="1" type="PLAYER" x="60.0682" y="168.955">
    <properties>
-    <property name="lighting.color" type="color" value="#32ff8826"/>
-    <property name="lighting.range" type="float" value="200"/>
+    <property name="lighting.color" type="color" value="#50ff5858"/>
    </properties>
    <point/>
   </object>
-  <object id="5" type="teleport" x="362.011" y="91.7955" width="15" height="86.5">
+  <object id="5" type="teleport" x="356.829" y="92.25" width="15" height="79.5">
    <properties>
-    <property name="target" value="tmx/hallway.tmx"/>
+    <property name="collision" type="bool" value="false"/>
+    <property name="file" value="tmx/hallway.tmx"/>
+    <property name="id" value="door-right"/>
+    <property name="sticky" type="bool" value="true"/>
+    <property name="target" value="door-left"/>
    </properties>
   </object>
   <object id="6" type="COLLISION" x="96.0909" y="128.273" width="32" height="32"/>

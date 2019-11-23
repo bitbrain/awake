@@ -10,16 +10,20 @@ import de.bitbrain.braingdx.event.GameEventListener;
 import de.bitbrain.braingdx.tmx.TiledMapEvents;
 import de.bitbrain.braingdx.world.GameObject;
 
-import static com.punchbrain.awake.GameObjectType.COLLISION;
 import static com.punchbrain.awake.GameObjectType.PLAYER;
+import static com.punchbrain.awake.GameObjectType.TELEPORT;
 
 public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoadGameObjectEvent> {
 
    private final GameContext2D context;
    private Player player;
+   private final String targetTeleportId;
 
-   public PlayerInitialiser(GameContext2D context) {
+   private GameObject targetTeleport;
+
+   public PlayerInitialiser(GameContext2D context, String targetTeleportId) {
       this.context = context;
+      this.targetTeleportId = targetTeleportId;
    }
 
    public Player getPlayer() {
@@ -48,6 +52,14 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
 
          Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, object);
          this.player = new Player(object, body);
+         if (targetTeleport != null) {
+            player.setPosition(targetTeleport.getLeft() + targetTeleport.getWidth() / 2f, targetTeleport.getTop());
+         }
+      } else if (TELEPORT.isTypeOf(object) && object.getAttribute("id", String.class).equals(targetTeleportId)) {
+         this.targetTeleport = object;
+         if (player != null) {
+            player.setPosition(targetTeleport.getLeft() + targetTeleport.getWidth() / 2f, targetTeleport.getTop());
+         }
       }
    }
 }

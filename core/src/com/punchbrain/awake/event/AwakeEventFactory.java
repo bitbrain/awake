@@ -1,6 +1,6 @@
 package com.punchbrain.awake.event;
 
-import com.badlogic.gdx.maps.MapProperties;
+import com.punchbrain.awake.GameObjectType;
 import de.bitbrain.braingdx.event.GameEvent;
 import de.bitbrain.braingdx.event.GameEventFactory;
 import de.bitbrain.braingdx.world.GameObject;
@@ -10,8 +10,10 @@ public class AwakeEventFactory implements GameEventFactory {
    @Override
    public GameEvent create(GameObject eventObject, GameObject producerObject) {
       if ("teleport".equals(eventObject.getType())) {
-         MapProperties properties = (MapProperties)eventObject.getAttribute(MapProperties.class);
-         return new TeleportEvent((String) properties.get("target"));
+         final String file = eventObject.getAttribute("file",String.class);
+         final String id = eventObject.getAttribute("id", String.class);
+         final String target = eventObject.getAttribute("target", String.class);
+         return new TeleportEvent(file, id, target, producerObject);
       }
       return null;
    }

@@ -2,13 +2,13 @@ package com.punchbrain.awake.input.intro;
 
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.ControllerAdapter;
-import com.punchbrain.awake.screens.IntroScreen;
+import com.punchbrain.awake.screens.LevelScreen;
 
 public class IntroControllerInputAdapter extends ControllerAdapter {
 
-   private final IntroScreen introScreen;
+   private final LevelScreen introScreen;
 
-   public IntroControllerInputAdapter(IntroScreen introScreen) {
+   public IntroControllerInputAdapter(LevelScreen introScreen) {
       this.introScreen = introScreen;
    }
 

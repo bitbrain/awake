@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="3">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="6">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="32" columns="8">
   <image source="interior.png" width="256" height="128"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="24" height="6">
   <data encoding="base64" compression="zlib">
-   eJzjYmBg4KYR5oLiUfOxY1Yam88LxCxAzEkjLArEAOoOBfw=
+   eAHjYmBg4KYR5gKaC8Kj5mMPA1Yahw8v0HwWIOakERYFmgsA6g4F/A==
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
   <object id="1" type="collision" x="0.75" y="178" width="766" height="15"/>
-  <object id="2" type="PLAYER" x="52" y="168.5">
+  <object id="2" type="PLAYER" x="83.3333" y="169.167">
    <point/>
+  </object>
+  <object id="3" type="teleport" x="10.2727" y="83.2121" width="15" height="86.5">
+   <properties>
+    <property name="file" value="tmx/boys-room.tmx"/>
+    <property name="id" value="door-left"/>
+    <property name="sticky" type="bool" value="true"/>
+    <property name="target" value="door-right"/>
+   </properties>
+  </object>
+  <object id="4" type="light" x="134.667" y="110.333">
+   <properties>
+    <property name="lighting.color" type="color" value="#ffffffff"/>
+    <property name="lighting.range" type="float" value="100"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" type="teleport" x="741.083" y="114.167" width="15" height="54.8333">
+   <properties>
+    <property name="file" value="tmx/bathroom.tmx"/>
+    <property name="id" value="door-right"/>
+    <property name="sticky" type="bool" value="true"/>
+    <property name="target" value="door-left"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
