@@ -43,6 +43,10 @@ public class Player {
       previousState = getState();
    }
 
+   public void setPosition(float x, float y) {
+      body.setTransform(x, y, body.getAngle());
+   }
+
    private JumpState getState() {
       if(body.getLinearVelocity().y > 0.1 || (body.getLinearVelocity().y < 0 && previousState == JumpState.JUMPING)) {
          return JumpState.JUMPING;
