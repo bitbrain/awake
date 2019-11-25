@@ -42,8 +42,9 @@
     <property name="collision" type="bool" value="false"/>
     <property name="file" value="tmx/hallway.tmx"/>
     <property name="id" value="door-right"/>
-    <property name="sticky" type="bool" value="true"/>
+    <property name="producer" value="PLAYER"/>
     <property name="target" value="door-left"/>
+    <property name="trigger.enteronly" type="bool" value="true"/>
    </properties>
   </object>
   <object id="6" type="COLLISION" x="96.0909" y="128.273" width="32" height="32"/>

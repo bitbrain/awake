@@ -17,8 +17,9 @@
    <properties>
     <property name="file" value="tmx/hallway.tmx"/>
     <property name="id" value="door-left"/>
-    <property name="sticky" type="bool" value="true"/>
+    <property name="producer" value="PLAYER"/>
     <property name="target" value="door-right"/>
+    <property name="trigger.enteronly" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
