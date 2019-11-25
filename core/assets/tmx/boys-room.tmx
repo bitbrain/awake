@@ -5,7 +5,7 @@
  </tileset>
  <layer id="3" name="background" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAHjYmBg4CYScwHVgfBQVs8CdD8nkVgUqA4AuwsC/g==
+   eAHjYmBg4CYScwHVgTC56tmAetnx6Ec3nw+olp8E9YTcBTKfBYg5icSiQHUAuFMC/A==
   </data>
  </layer>
  <layer id="8" name="Tile Layer 3" width="12" height="6">
@@ -15,7 +15,7 @@
  </layer>
  <layer id="6" name="interior" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAFjYCAdCCJpQWYjCZPFZCVRFy+N1YOMBwAqSABC
+   eAFjYCAdcCNpQWYjCZPFZCVRFy+aekJuQVePph0rFwAjHABB
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
@@ -37,9 +37,6 @@
  </objectgroup>
  <objectgroup id="4" name="lights">
   <object id="1" type="PLAYER" x="60.0682" y="168.955">
-   <properties>
-    <property name="lighting.color" type="color" value="#50ff5858"/>
-   </properties>
    <point/>
   </object>
   <object id="5" type="teleport" x="352.829" y="89.75" width="15" height="79.5">
@@ -52,13 +49,10 @@
     <property name="trigger.enteronly" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="6" type="COLLISION" x="96.0909" y="128.273" width="32" height="32"/>
-  <object id="7" type="COLLISION" x="128.114" y="31.9659" width="32" height="32"/>
-  <object id="8" type="COLLISION" x="32.2841" y="32.0909" width="32" height="32"/>
-  <object id="13" type="light" x="93" y="46.25">
+  <object id="13" type="light" x="128.25" y="97">
    <properties>
-    <property name="lighting.color" type="color" value="#46ff0004"/>
-    <property name="lighting.range" type="float" value="100"/>
+    <property name="lighting.color" type="color" value="#961d00ff"/>
+    <property name="lighting.range" type="float" value="350"/>
    </properties>
    <point/>
   </object>

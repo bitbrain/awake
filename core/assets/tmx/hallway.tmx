@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="13">
- <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="32" columns="8">
-  <image source="interior.png" width="256" height="128"/>
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="14">
+ <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="interior.png" width="256" height="256"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="24" height="6">
   <data encoding="base64" compression="zlib">
    eAHjYmBg4KYR5gKaC8Kj5mMPA1Yahw8v0HwWIOakERYFmgsA6g4F/A==
+  </data>
+ </layer>
+ <layer id="3" name="Tile Layer 2" width="24" height="6">
+  <data encoding="base64" compression="zlib">
+   eAFjYBi+QBjoNRGo9zSBtBYQawOxDlQMWR4qhJeSBcrKAbE8VJU0kJaBsg2BtBEQGwOxCVQMWR4qhJdSBcqqAbE6VJUykFaBsrFRhOSx6aG2GABvhQOL
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
@@ -19,10 +24,10 @@
     <property name="trigger.enteronly" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="4" type="light" x="172.667" y="52.333">
+  <object id="4" type="light" x="383.94" y="96.6966">
    <properties>
-    <property name="lighting.color" type="color" value="#46ff0004"/>
-    <property name="lighting.range" type="float" value="100"/>
+    <property name="lighting.color" type="color" value="#463b00ff"/>
+    <property name="lighting.range" type="float" value="200"/>
    </properties>
    <point/>
   </object>
@@ -46,23 +51,6 @@
    </properties>
   </object>
   <object id="9" type="PLAYER" x="104.75" y="159.5">
-   <properties>
-    <property name="lighting.color" type="color" value="#50ff5858"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="10" type="light" x="333.667" y="47.6667">
-   <properties>
-    <property name="lighting.color" type="color" value="#46ff0004"/>
-    <property name="lighting.range" type="float" value="100"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="11" type="light" x="493.333" y="45">
-   <properties>
-    <property name="lighting.color" type="color" value="#46ff0004"/>
-    <property name="lighting.range" type="float" value="100"/>
-   </properties>
    <point/>
   </object>
   <object id="12" type="light" x="654.333" y="47.6667">
