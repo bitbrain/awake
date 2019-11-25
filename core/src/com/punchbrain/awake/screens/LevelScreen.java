@@ -1,5 +1,9 @@
 package com.punchbrain.awake.screens;
 
+import aurelienribon.tweenengine.BaseTween;
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenCallback;
+import com.badlogic.gdx.audio.Music;
 import com.punchbrain.awake.AwakeGame;
 import com.punchbrain.awake.Colors;
 import com.punchbrain.awake.assets.Assets;
@@ -10,6 +14,7 @@ import com.punchbrain.awake.input.intro.IntroControllerInputAdapter;
 import com.punchbrain.awake.input.intro.IntroKeyboardInputAdapter;
 import com.punchbrain.awake.tmx.CollisionInitialiser;
 import com.punchbrain.awake.tmx.PlayerInitialiser;
+import de.bitbrain.braingdx.assets.SharedAssetManager;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.graphics.lighting.LightingConfig;
 import de.bitbrain.braingdx.graphics.pipeline.layers.RenderPipeIds;
@@ -43,6 +48,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    @Override
    protected void onCreate(GameContext2D context) {
+
       context.getScreenTransitions().in(0.5f);
       context.setBackgroundColor(Colors.BACKGROUND);
 

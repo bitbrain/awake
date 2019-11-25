@@ -2,17 +2,21 @@ package com.punchbrain.awake;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.screens.LevelScreen;
 import de.bitbrain.braingdx.BrainGdxGame;
 import de.bitbrain.braingdx.GameSettings;
 import de.bitbrain.braingdx.assets.GameAssetLoader;
+import de.bitbrain.braingdx.assets.SharedAssetManager;
 import de.bitbrain.braingdx.assets.SmartAssetLoader;
 import de.bitbrain.braingdx.event.GameEventManagerImpl;
 import de.bitbrain.braingdx.graphics.GraphicsSettings;
 import de.bitbrain.braingdx.graphics.postprocessing.filters.RadialBlur;
 import de.bitbrain.braingdx.screens.AbstractScreen;
 import org.apache.commons.lang.SystemUtils;
+
+import static com.punchbrain.awake.assets.Assets.Musics.DARK_AMBIENT_001;
 
 public class AwakeGame extends BrainGdxGame {
 
@@ -42,6 +46,9 @@ public class AwakeGame extends BrainGdxGame {
    @Override
    protected AbstractScreen<?, ?> getInitialScreen() {
       configureSettings();
+      SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setLooping(true);
+      SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setVolume(0.01f);
+      SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).play();
       return new LevelScreen(this, Assets.TiledMaps.BOYS_ROOM);
    }
 

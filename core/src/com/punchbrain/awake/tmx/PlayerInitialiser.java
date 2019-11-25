@@ -1,14 +1,20 @@
 package com.punchbrain.awake.tmx;
 
+import aurelienribon.tweenengine.BaseTween;
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenCallback;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.model.Player;
+import de.bitbrain.braingdx.assets.SharedAssetManager;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.event.GameEventListener;
 import de.bitbrain.braingdx.tmx.TiledMapEvents;
+import de.bitbrain.braingdx.tweens.SharedTweenManager;
 import de.bitbrain.braingdx.world.GameObject;
 
 import static com.punchbrain.awake.GameObjectType.PLAYER;
@@ -34,7 +40,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
 
    @Override
    public void onEvent(TiledMapEvents.OnLoadGameObjectEvent event) {
-      GameObject object = event.getObject();
+      final GameObject object = event.getObject();
       if (PLAYER.isTypeOf(object)) {
          context.getGameCamera().setTrackingTarget(object);
          context.getGameCamera().setTargetTrackingSpeed(0.02f);
@@ -63,6 +69,12 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
          }
       } else if (targetTeleportId != null && TELEPORT.isTypeOf(object) && object.getAttribute("id", String.class).equals(targetTeleportId)) {
          this.targetTeleport = object;
+         Tween.call(new TweenCallback() {
+            @Override
+            public void onEvent(int type, BaseTween<?> source) {
+               context.getAudioManager().spawnSound(Assets.Sounds.DOOR_CLOSE, object.getLeft(), object.getTop(), 1f, 1f, 358f);
+            }
+         }).delay(0.2f).start(SharedTweenManager.getInstance());
          if (player != null) {
             Vector2 pos = getTargetTeleportPosition(targetTeleport, playerObject);
             player.setPosition(pos.x, pos.y);

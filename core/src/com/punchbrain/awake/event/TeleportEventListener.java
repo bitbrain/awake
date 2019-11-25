@@ -1,10 +1,12 @@
 package com.punchbrain.awake.event;
 
 import com.punchbrain.awake.GameObjectType;
+import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.model.Player;
 import com.punchbrain.awake.screens.LevelScreen;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.event.GameEventListener;
+import de.bitbrain.braingdx.world.GameObject;
 
 public class TeleportEventListener implements GameEventListener<TeleportEvent> {
 
@@ -23,8 +25,10 @@ public class TeleportEventListener implements GameEventListener<TeleportEvent> {
          String file = event.getFile();
          String id = event.getTarget();
          gameContext.setPaused(true);
+         GameObject o = event.getProducer();
          gameContext.getScreenTransitions().out(new LevelScreen(screen.getGame(), file, id), 0.5f);
          fired = true;
+         gameContext.getAudioManager().spawnSound(Assets.Sounds.DOOR_OPEN, o.getLeft(), o.getTop(), 1f, 1f, 358f);
       }
    }
 }

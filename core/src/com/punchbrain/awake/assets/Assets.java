@@ -12,12 +12,13 @@ public interface Assets {
       String BATHROOM = "tmx/bathroom.tmx";
    }
 
-   interface Music {
-      // TODO
+   interface Musics {
+      String DARK_AMBIENT_001 = "music/dark-ambient-001.ogg";
    }
 
    interface Sounds {
-      // TODO
+      String DOOR_OPEN = "sounds/door-open.ogg";
+      String DOOR_CLOSE = "sounds/door-shut.ogg";
    }
 
    interface Particles {
