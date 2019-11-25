@@ -60,12 +60,5 @@
    </properties>
    <point/>
   </object>
-  <object id="12" type="light" x="654.333" y="47.6667">
-   <properties>
-    <property name="lighting.color" type="color" value="#46ff0004"/>
-    <property name="lighting.range" type="float" value="100"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
 </map>
