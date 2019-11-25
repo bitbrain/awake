@@ -19,7 +19,7 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="COLLISION" x="0.579545" y="177.296" width="423.398" height="13.9886">
+  <object id="4" type="COLLISION" x="-2.17046" y="206.523" width="423.398" height="4.13633">
    <properties>
     <property name="collision" type="bool" value="false"/>
    </properties>
@@ -36,7 +36,10 @@
   </object>
  </objectgroup>
  <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="60.0682" y="168.955">
+  <object id="1" type="PLAYER" x="84.8182" y="188.205">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="5" type="teleport" x="352.829" y="89.75" width="15" height="79.5">

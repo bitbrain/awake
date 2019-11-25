@@ -14,7 +14,11 @@
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
-  <object id="1" type="collision" x="-3.75" y="176.25" width="387.25" height="15"/>
+  <object id="1" type="collision" x="-0.852273" y="208.273" width="387.25" height="5.36364">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+   </properties>
+  </object>
   <object id="3" type="teleport" x="9.75" y="113.5" width="15" height="55.75">
    <properties>
     <property name="file" value="tmx/hallway.tmx"/>
@@ -34,7 +38,10 @@
     <property name="collision" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="6" type="PLAYER" x="106.75" y="154.25">
+  <object id="6" type="PLAYER" x="110.125" y="184.625">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
   <object id="9" type="light" x="364.5" y="83.25">
