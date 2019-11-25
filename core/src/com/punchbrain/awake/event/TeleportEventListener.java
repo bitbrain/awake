@@ -28,7 +28,7 @@ public class TeleportEventListener implements GameEventListener<TeleportEvent> {
          GameObject o = event.getProducer();
          gameContext.getScreenTransitions().out(new LevelScreen(screen.getGame(), file, id), 0.5f);
          fired = true;
-         gameContext.getAudioManager().spawnSound(Assets.Sounds.DOOR_OPEN, o.getLeft(), o.getTop(), 1f, 1f, 358f);
+         gameContext.getAudioManager().spawnSound(Assets.Sounds.DOOR_OPEN, o.getLeft(), o.getTop(), (float) (0.8f + Math.random() * 0.3f), 1f, 358f);
       }
    }
 }

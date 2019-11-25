@@ -72,7 +72,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
          Tween.call(new TweenCallback() {
             @Override
             public void onEvent(int type, BaseTween<?> source) {
-               context.getAudioManager().spawnSound(Assets.Sounds.DOOR_CLOSE, object.getLeft(), object.getTop(), 1f, 1f, 358f);
+               context.getAudioManager().spawnSound(Assets.Sounds.DOOR_CLOSE, object.getLeft(), object.getTop(), (float) (0.8f + Math.random() * 0.3f), 1f, 358f);
             }
          }).delay(0.2f).start(SharedTweenManager.getInstance());
          if (player != null) {
