@@ -1,4 +1,4 @@
-package com.punchbrain.awake.input.intro;
+package com.punchbrain.awake.input;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -9,12 +9,12 @@ import de.bitbrain.braingdx.util.Updateable;
 
 import static com.badlogic.gdx.Input.Keys.*;
 
-public class IntroKeyboardInputAdapter extends InputAdapter implements Updateable {
+public class LevelKeyboardInputAdapter extends InputAdapter implements Updateable {
 
    private final LevelScreen screen;
    private final Player player;
 
-   public IntroKeyboardInputAdapter(LevelScreen screen, Player player) {
+   public LevelKeyboardInputAdapter(LevelScreen screen, Player player) {
       this.screen = screen;
       this.player = player;
    }
