@@ -24,7 +24,7 @@ allprojects {
         roboVMVersion = '2.3.7'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
-        brainGdxVersion = '0.6.6'
+        brainGdxVersion = '0.6.7'
     }
 
     repositories {
@@ -58,6 +58,7 @@ project(":core") {
 
 
     dependencies {
+        implementation "commons-lang:commons-lang:2.5"
         implementation "io.github.bitbrain:braingdx-2d:$brainGdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"

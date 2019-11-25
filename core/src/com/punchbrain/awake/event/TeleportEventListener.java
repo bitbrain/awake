@@ -22,7 +22,8 @@ public class TeleportEventListener implements GameEventListener<TeleportEvent> {
       if (!fired && GameObjectType.PLAYER.isTypeOf(event.getProducer())) {
          String file = event.getFile();
          String id = event.getTarget();
-         screen.getGame().setScreen(new LevelScreen(screen.getGame(), file, id));
+         gameContext.setPaused(true);
+         gameContext.getScreenTransitions().out(new LevelScreen(screen.getGame(), file, id), 0.5f);
          fired = true;
       }
    }

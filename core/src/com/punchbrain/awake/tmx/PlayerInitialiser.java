@@ -1,5 +1,6 @@
 package com.punchbrain.awake.tmx;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -20,6 +21,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
    private final String targetTeleportId;
 
    private GameObject targetTeleport;
+   private GameObject playerObject;
 
    public PlayerInitialiser(GameContext2D context, String targetTeleportId) {
       this.context = context;
@@ -52,14 +54,32 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
 
          Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, object);
          this.player = new Player(object, body);
+         this.playerObject = object;
          if (targetTeleport != null) {
-            player.setPosition(targetTeleport.getLeft() + targetTeleport.getWidth() / 2f, targetTeleport.getTop());
+            Vector2 pos = getTargetTeleportPosition(targetTeleport, object);
+            player.setPosition(pos.x, pos.y);
+            context.getGameCamera().focusCentered(playerObject);
+            context.setPaused(true);
          }
-      } else if (TELEPORT.isTypeOf(object) && object.getAttribute("id", String.class).equals(targetTeleportId)) {
+      } else if (targetTeleportId != null && TELEPORT.isTypeOf(object) && object.getAttribute("id", String.class).equals(targetTeleportId)) {
          this.targetTeleport = object;
          if (player != null) {
-            player.setPosition(targetTeleport.getLeft() + targetTeleport.getWidth() / 2f, targetTeleport.getTop());
+            Vector2 pos = getTargetTeleportPosition(targetTeleport, playerObject);
+            player.setPosition(pos.x, pos.y);
+            context.getGameCamera().focusCentered(playerObject);
+            context.setPaused(true);
          }
       }
    }
+
+   private Vector2 getTargetTeleportPosition(GameObject teleport, GameObject target) {
+      String id = teleport.getAttribute("id", String.class);
+      if (id.contains("left")) {
+         return teleport.getPosition().add(target.getWidth(), 0);
+      } else if (id.contains("right")) {
+         return teleport.getPosition().sub(target.getWidth(), 0);
+      }
+      return teleport.getPosition().add(target.getWidth() / 2f - target.getWidth() / 2f, 0);
+   }
 }
+

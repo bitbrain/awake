@@ -43,11 +43,12 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    @Override
    protected void onCreate(GameContext2D context) {
+      context.getScreenTransitions().in(0.5f);
       context.setBackgroundColor(Colors.BACKGROUND);
 
+      setupGraphics(context);
       setupEvents(context);
       setupTiled(context);
-      setupGraphics(context);
       setupPhysics(context);
       setupInput(context.getInputManager());
    }
