@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="10">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="10">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="interior.png" width="256" height="256"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAHjYmBg4CYScwHVgTAp6nVJVG9KY/W2QPM5icQ8QHUACDYDpw==
+   eJzjYmBg4CYSc0ExKep1SVRvSmP1tkDMSSTmAWIACDYDpw==
   </data>
  </layer>
  <layer id="3" name="Tile Layer 2" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAFjYBh6wAzoZHMSnG0HVGtPgnpkpQBKkADr
+   eJxjYBh6wAyIzUlQbwfE9mTaBQBKkADr
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
-  <object id="1" type="collision" x="-0.852273" y="208.273" width="387.25" height="5.36364">
+  <object id="1" type="collision" x="5.14773" y="179.273" width="387.25" height="5.36364">
    <properties>
     <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
   <object id="3" type="teleport" x="9.75" y="113.5" width="15" height="55.75">
@@ -31,14 +32,16 @@
   <object id="4" type="COLLISION" x="1.801" y="0.8805" width="4.898" height="177.239">
    <properties>
     <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
   <object id="5" type="COLLISION" x="379.301" y="-2.3695" width="4.898" height="177.239">
    <properties>
     <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="6" type="PLAYER" x="110.125" y="184.625">
+  <object id="6" type="PLAYER" x="110.125" y="167.625">
    <properties>
     <property name="collision" type="bool" value="false"/>
    </properties>

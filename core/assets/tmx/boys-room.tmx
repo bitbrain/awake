@@ -19,24 +19,24 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="COLLISION" x="-2.17046" y="206.523" width="423.398" height="4.13633">
+  <object id="4" x="9.10536" y="177.856" width="423.398" height="4.13633">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="11" type="COLLISION" x="1.301" y="-0.971573" width="4.898" height="177.239">
+  <object id="11" x="1.301" y="-0.971573" width="4.898" height="184.33">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" type="COLLISION" x="376.801" y="-2.8695" width="4.898" height="177.239">
+  <object id="12" x="378.983" y="7.85777" width="4.898" height="177.239">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="84.8182" y="188.205">
+  <object id="1" type="PLAYER" x="67.6636" y="161.208">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="lighting.color" type="color" value="#a6ffa280"/>
