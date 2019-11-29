@@ -19,24 +19,30 @@
   </data>
  </layer>
  <objectgroup id="7" name="collisions">
-  <object id="4" type="COLLISION" x="-2.17046" y="206.523" width="423.398" height="4.13633">
+  <object id="4" x="0.193176" y="188.341" width="423.398" height="4.13633">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="11" type="COLLISION" x="1.301" y="-0.971573" width="4.898" height="177.239">
+  <object id="11" x="1.301" y="-0.971573" width="4.898" height="184.33">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="12" type="COLLISION" x="376.801" y="-2.8695" width="4.898" height="177.239">
+  <object id="12" x="378.983" y="7.85777" width="4.898" height="177.239">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="19" x="223.273" y="61.0909">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+   <polygon points="0,0 50.1818,-23.4545 69.6364,5.09091 31.8182,17.2727 84,21.8182 23.4545,26.9091 94.9091,43.6364 31.2727,42 76.3636,62.9091 -2.54545,63.0909 -16.3636,88.3636 -27.2727,48.1818 6.54545,33.2727 -58.7273,28.7273 -6.72727,18.3636 -50.3636,2.18182"/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="84.8182" y="188.205">
+  <object id="1" type="PLAYER" x="66.0909" y="105.114">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="lighting.color" type="color" value="#a6ffa280"/>
