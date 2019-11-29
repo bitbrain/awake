@@ -14,6 +14,8 @@ import com.punchbrain.awake.event.TeleportEvent;
 import com.punchbrain.awake.event.TeleportEventListener;
 import com.punchbrain.awake.input.LevelControllerInputAdapter;
 import com.punchbrain.awake.input.LevelKeyboardInputAdapter;
+import com.punchbrain.awake.model.Circuit;
+import com.punchbrain.awake.tmx.CircuitInitialiser;
 import com.punchbrain.awake.tmx.PlayerInitialiser;
 import de.bitbrain.braingdx.assets.SharedAssetManager;
 import de.bitbrain.braingdx.context.GameContext2D;
@@ -31,6 +33,7 @@ import de.bitbrain.braingdx.world.GameObject;
 public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private PlayerInitialiser playerInitialiser;
+   private CircuitInitialiser circuitInitialiser;
    private final String targetSpawnId;
    private final String tiledMapFile;
 
@@ -66,7 +69,9 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private void setupEvents(GameContext2D context) {
       this.playerInitialiser = new PlayerInitialiser(context, targetSpawnId);
+      this.circuitInitialiser = new CircuitInitialiser(context);
       context.getEventManager().register(playerInitialiser, OnLoadGameObjectEvent.class);
+      context.getEventManager().register(circuitInitialiser, OnLoadGameObjectEvent.class);
       context.getEventManager().register(new TeleportEventListener(context, this), TeleportEvent.class);
    }
 
