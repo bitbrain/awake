@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="24" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="interior.png" width="256" height="256"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="24" height="6">
   <data encoding="base64" compression="zlib">
-   eAHjYmBg4KYR5gKaC8K0NF+XhuazAs02paH5vHQw3xZoByeNsCjQXACFCQax
+   eJzjYmBg4KYR5oJiWpqvS0PzWYHYlIbm89LBfFsg5qQRFgViAIUJBrE=
   </data>
  </layer>
  <layer id="3" name="Tile Layer 2" width="24" height="6">
   <data encoding="base64" compression="zlib">
-   eAFjYBi+QBjoNRGo9zSBtBYQawOxDlQMWR4qhJeSBcrKAbE8VJU0kJaBsg2BtBEQGwOxCVQMWR4qhJdSBcqqAbE6VJUykFaBsrFRhOSx6aG2GABvhQOL
+   eJxjYBi+QBiIRaBsTSDWAmJtINbBIk8MkAViOSCWh/KlgVgGyjYEYiMgNgZiEyzyxABVIFYDYnUoXxmIVfCoJyRPDwAAb4UDiw==
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
