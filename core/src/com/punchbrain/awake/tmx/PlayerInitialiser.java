@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.punchbrain.awake.animation.PlayerDirection;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.model.Player;
 import de.bitbrain.braingdx.assets.SharedAssetManager;
@@ -45,6 +46,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
          context.getGameCamera().setTrackingTarget(object);
          context.getGameCamera().setTargetTrackingSpeed(0.02f);
          context.getGameCamera().setDefaultZoomFactor(0.2f);
+         object.setAttribute(PlayerDirection.class, PlayerDirection.LEFT);
          object.setDimensions(32, 64);
          BodyDef playerBodyDef = new BodyDef();
          playerBodyDef.type = BodyDef.BodyType.DynamicBody;
