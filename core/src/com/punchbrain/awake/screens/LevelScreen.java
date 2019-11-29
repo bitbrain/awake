@@ -8,7 +8,6 @@ import com.punchbrain.awake.event.TeleportEvent;
 import com.punchbrain.awake.event.TeleportEventListener;
 import com.punchbrain.awake.input.LevelControllerInputAdapter;
 import com.punchbrain.awake.input.LevelKeyboardInputAdapter;
-import com.punchbrain.awake.tmx.CollisionInitialiser;
 import com.punchbrain.awake.tmx.PlayerInitialiser;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.graphics.lighting.LightingConfig;
@@ -46,7 +45,6 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
       context.getScreenTransitions().in(0.5f);
       context.setBackgroundColor(Colors.BACKGROUND);
-
       setupGraphics(context);
       setupEvents(context);
       setupTiled(context);
@@ -60,7 +58,6 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
    }
 
    private void setupEvents(GameContext2D context) {
-      context.getEventManager().register(new CollisionInitialiser(context), OnLoadGameObjectEvent.class);
       this.playerInitialiser = new PlayerInitialiser(context, targetSpawnId);
       context.getEventManager().register(playerInitialiser, OnLoadGameObjectEvent.class);
       context.getEventManager().register(new TeleportEventListener(context, this), TeleportEvent.class);
