@@ -8,18 +8,55 @@ import de.bitbrain.braingdx.ui.AnimationDrawable;
 
 public interface AnimationConfigFactory {
     public static AnimationConfig playerAnimationConfig = AnimationConfig.builder()
-            .registerFrames(PlayerDirection.LEFT, AnimationFrames.builder()
-                // the number of frames
+            .registerFrames(PlayerDirection.RUNNING_RIGHT, AnimationFrames.builder()
                      .frames(4)
-                // 4th tile from the left (3=index)
                      .origin(0, 1)
-                // change frame every 200m
                      .duration(0.2f)
-                // Animate directional
                      .direction(AnimationFrames.Direction.HORIZONTAL)
-                // Animate to the end and then backwards and repeat
                      .playMode(Animation.PlayMode.LOOP)
-                     .build()).build();
+                     .build())
+            .registerFrames(PlayerDirection.RUNNING_LEFT, AnimationFrames.builder()
+                    .frames(4)
+                    .origin(0, 2)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(PlayerDirection.JUMPING_RIGHT, AnimationFrames.builder()
+                    .frames(2)
+                    .origin(1, 5)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(PlayerDirection.JUMPING_LEFT, AnimationFrames.builder()
+                    .frames(2)
+                    .origin(1, 6)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(PlayerDirection.FALLING_RIGHT, AnimationFrames.builder()
+                    .frames(2)
+                    .origin(0, 7)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(PlayerDirection.FALLING_LEFT, AnimationFrames.builder()
+                    .frames(2)
+                    .origin(0, 8)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(PlayerDirection.STANDING_LEFT, AnimationFrames.builder()
+                    .frames(1)
+                    .origin(0, 0)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build()).build();
 
 }
 
