@@ -3,8 +3,6 @@ package com.punchbrain.awake.animation;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import de.bitbrain.braingdx.graphics.animation.AnimationConfig;
 import de.bitbrain.braingdx.graphics.animation.AnimationFrames;
-import de.bitbrain.braingdx.graphics.animation.AnimationRenderer;
-import de.bitbrain.braingdx.ui.AnimationDrawable;
 
 public interface AnimationConfigFactory {
     public static AnimationConfig playerAnimationConfig = AnimationConfig.builder()
