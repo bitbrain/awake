@@ -54,7 +54,13 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
          playerBodyDef.fixedRotation = true;
          FixtureDef fixtureDef = new FixtureDef();
          PolygonShape shape = new PolygonShape();
-         shape.setAsBox(object.getWidth() / 2f, object.getHeight() / 2f);
+         shape.set(new float[]{
+                 -16f, 16f,
+                 0f, 32f,
+                 16f, 16f,
+                 -8f, -32f,
+                 8f, -32f
+         });
          fixtureDef.shape = shape;
          fixtureDef.density = 0.00001f;
          fixtureDef.friction = 0f;
