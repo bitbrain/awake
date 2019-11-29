@@ -7,7 +7,7 @@ public class Player {
 
    private static final float SPEED = 110f;
 
-   enum JumpState {
+   public enum JumpState {
       JUMPING, FALLING, WALKING;
    }
 
@@ -25,6 +25,22 @@ public class Player {
       if (getState() == JumpState.WALKING) {
          body.setLinearVelocity(0f, body.getLinearVelocity().y);
       }
+   }
+
+   public float getVelocityX(){
+      return body.getLinearVelocity().x;
+   }
+
+   public float getVelocityY(){
+      return body.getLinearVelocity().y;
+   }
+
+   public float getLinearVelocity(){
+      return (float)Math.pow((Math.pow(getVelocityY(),2) + Math.pow(getVelocityX(), 2)),0.5);
+   }
+
+   public GameObject getGameObject(){
+      return player;
    }
 
    public void moveLeft() {
@@ -47,8 +63,8 @@ public class Player {
       body.setTransform(x, y, body.getAngle());
    }
 
-   private JumpState getState() {
-      if(body.getLinearVelocity().y > 0.1 || (body.getLinearVelocity().y < 0 && previousState == JumpState.JUMPING)) {
+   public JumpState getState() {
+      if(body.getLinearVelocity().y > 0.1 ){
          return JumpState.JUMPING;
       } else if (body.getLinearVelocity().y < -0.1) {
          return JumpState.FALLING;
