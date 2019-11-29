@@ -11,6 +11,7 @@ public interface Assets {
       String BOYS_ROOM = "tmx/boys-room.tmx";
       String HALLWAY = "tmx/hallway.tmx";
       String BATHROOM = "tmx/bathroom.tmx";
+      String LEVEL_01 = "tmx/level-01.tmx";
    }
 
    interface Musics {

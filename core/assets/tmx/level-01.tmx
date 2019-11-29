@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="124" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="34">
+ <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
+  <image source="interior.png" width="256" height="256"/>
+ </tileset>
+ <layer id="6" name="Tile Layer 1" width="124" height="12">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJACAMAMG06iyWlu6/lllCCOQOfoKPAAAAqpjZ+hT1+N3LDr87OeF3J373crPxKep550cGaQ==
+  </data>
+ </layer>
+ <layer id="7" name="Tile Layer 2" width="124" height="12">
+  <data encoding="base64" compression="zlib">
+   eJzt1bEKgDAMRdEMOhhx6OD//6odCm6SQKjiu8PZSpZbEjezPagN0XdPKmZE5uDmA7010FsLvbVke89Eb3rT+7+9UW+lt5Tjxd7s5W/1ztzLyH3N3GH+AL3ZBTW9l26DhLO7AFf/Qp8=
+  </data>
+ </layer>
+ <objectgroup id="2" name="collisions">
+  <object id="7" x="0.0358518" y="-21.2311" width="4.898" height="406.032">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" type="PLAYER" x="160.237" y="320.116">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="lighting.color" type="color" value="#bdff816a"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" x="7.88433" y="370.88" width="3967.88" height="12.239">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="16" x="3962.58" y="-35.7378" width="4.898" height="406.032">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="17" x="1224.14" y="4.7669" width="306.988" height="182.096">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="18" x="671.179" y="1.42983" width="286.967" height="124.893">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="19" x="832.777" y="290.304" width="252.645" height="75.3173">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="20" x="549.624" y="291.257" width="216.417" height="74.3638">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="21" x="1186.48" y="292.211" width="55.2954" height="74.3638">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="22" x="1345.22" y="319.859" width="92.4772" height="47.6692">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="23" x="32.0041" y="321.083" width="33.909" height="30.361">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="24" x="356.087" y="4.90667" width="56.2494" height="120.698">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="25" x="962.437" y="257.889" width="122.985" height="33.3686">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="26" x="160.888" y="127.473">
+   <properties>
+    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" x="384.601" y="192.2">
+   <properties>
+    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" x="550.1" y="50.5291">
+   <properties>
+    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" x="1072.55" y="102.965">
+   <properties>
+    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" x="1534.94" y="325.102">
+   <properties>
+    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" x="64" y="288" width="33.909" height="30.361">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="32" x="66.0455" y="351.82" width="33.909" height="30.361">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="33" x="194.792" y="288.818" width="186.417" height="74.3638">
+   <properties>
+    <property name="physics.enabled" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
