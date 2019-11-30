@@ -16,6 +16,8 @@ import com.punchbrain.awake.bootstrap.BootstrapFactory;
 import com.punchbrain.awake.bootstrap.LevelBootstrap;
 import com.punchbrain.awake.bootstrap.LevelStageBootstrap;
 import com.punchbrain.awake.event.AwakeEventFactory;
+import com.punchbrain.awake.event.GameOverEvent;
+import com.punchbrain.awake.event.GameOverEventListener;
 import com.punchbrain.awake.event.TeleportEvent;
 import com.punchbrain.awake.event.TeleportEventListener;
 import com.punchbrain.awake.input.LevelControllerInputAdapter;
@@ -82,6 +84,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
       this.playerInitialiser = new PlayerInitialiser(context, targetSpawnId);
       context.getEventManager().register(playerInitialiser, OnLoadGameObjectEvent.class);
       context.getEventManager().register(new TeleportEventListener(context, this), TeleportEvent.class);
+      context.getEventManager().register(new GameOverEventListener(context, this), GameOverEvent.class);
    }
 
    private void setupInput(InputManager inputManager) {
