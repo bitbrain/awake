@@ -91,7 +91,6 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
             Vector2 pos = getTargetTeleportPosition(targetTeleport, playerObject);
             player.setPosition(pos.x, pos.y);
             context.getGameCamera().focusCentered(playerObject);
-            context.setPaused(true);
          }
       }
    }
