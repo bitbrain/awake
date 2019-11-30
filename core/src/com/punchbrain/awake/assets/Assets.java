@@ -5,6 +5,8 @@ public interface Assets {
    interface Textures {
       String PLAYER = "textures/player.png";
       String PLAYER_TILESET = "textures/player-sprites.png";
+      String LAMP_TILESET = "textures/lamp-sprites.png";
+      String FLIP_SWITCH_TILESET = "textures/flip-switch-sprites.png";
    }
 
    interface TiledMaps {

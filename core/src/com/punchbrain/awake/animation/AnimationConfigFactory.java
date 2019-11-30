@@ -3,8 +3,6 @@ package com.punchbrain.awake.animation;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import de.bitbrain.braingdx.graphics.animation.AnimationConfig;
 import de.bitbrain.braingdx.graphics.animation.AnimationFrames;
-import de.bitbrain.braingdx.graphics.animation.AnimationRenderer;
-import de.bitbrain.braingdx.ui.AnimationDrawable;
 
 public interface AnimationConfigFactory {
     public static AnimationConfig playerAnimationConfig = AnimationConfig.builder()
@@ -53,6 +51,22 @@ public interface AnimationConfigFactory {
             .registerFrames(PlayerDirection.STANDING_LEFT, AnimationFrames.builder()
                     .frames(1)
                     .origin(0, 0)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build()).build();
+
+    public static AnimationConfig lampAnimationConfig = AnimationConfig.builder()
+            .registerFrames(LampState.OFF, AnimationFrames.builder()
+                    .frames(1)
+                    .origin(0, 0)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(LampState.ON, AnimationFrames.builder()
+                    .frames(1)
+                    .origin(1, 0)
                     .duration(0.2f)
                     .direction(AnimationFrames.Direction.HORIZONTAL)
                     .playMode(Animation.PlayMode.LOOP)
