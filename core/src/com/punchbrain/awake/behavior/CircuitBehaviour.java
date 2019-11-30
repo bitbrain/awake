@@ -17,6 +17,7 @@ public class CircuitBehaviour extends BehaviorAdapter {
     private GameContext2D context;
     private Light lampLight;
     private boolean continuous = false;
+    private float deltaAccumulator = 0;
 
 
     public CircuitBehaviour(Circuit circuit, GameContext2D context){
@@ -30,6 +31,7 @@ public class CircuitBehaviour extends BehaviorAdapter {
         if(circuit.isOn()){
             circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.ON);
             circuit.getLampGameObject().setAttribute(LampState.class, LampState.ON);
+            circuit.increaseDelta(delta);
         } else {
             circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.OFF);
             circuit.getLampGameObject().setAttribute(LampState.class, LampState.OFF);

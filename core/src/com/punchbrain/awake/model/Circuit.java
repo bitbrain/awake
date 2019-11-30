@@ -8,32 +8,50 @@ public class Circuit {
     GameObject lamp;
     GameObject flipSwitch;
     Light lightObject;
+    float deltaAccumulator = 0;
+    float deltaLimit = 30;
 
     boolean isOn;
 
-    public Circuit(GameObject lamp, GameObject flipSwitch, Light lightObject){
+    public Circuit(GameObject lamp, GameObject flipSwitch, Light lightObject) {
         this.lamp = lamp;
         this.flipSwitch = flipSwitch;
         this.lightObject = lightObject;
     }
 
-    public boolean isOn(){
+    public boolean isOn() {
+        if (deltaAccumulator > deltaLimit) {
+            return false;
+        }
         return isOn;
     }
 
-    public Light getLightObject(){
+    public Light getLightObject() {
         return lightObject;
     }
 
-    public void flipSwitch(){
-        isOn = !isOn;
+    public float increaseDelta(float delta) {
+        if (deltaAccumulator < deltaLimit) {
+            this.deltaAccumulator += delta;
+            if(deltaAccumulator > deltaLimit){
+                this.getLightObject().setDistance(0);
+            }
+        }
+        return this.deltaAccumulator;
     }
 
-    public GameObject getLampGameObject(){
+    public void flipSwitch() {
+        if (deltaAccumulator == 0) {
+            isOn = true;
+            deltaAccumulator += 1;
+        }
+    }
+
+    public GameObject getLampGameObject() {
         return lamp;
     }
 
-    public GameObject getFlipSwitchGameObject(){
+    public GameObject getFlipSwitchGameObject() {
         return flipSwitch;
     }
 }
