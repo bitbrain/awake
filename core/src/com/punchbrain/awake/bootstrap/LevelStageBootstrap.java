@@ -20,11 +20,11 @@ public class LevelStageBootstrap implements LevelBootstrap {
         // add hound
         GameObject hound = gameContext2D.getGameWorld().addObject();
         hound.setType(HOUND);
-        hound.setDimensions(8f, 8f);
+        hound.setDimensions(64f, 64f);
         hound.setPosition(0f, tiledMapContext.getWorldHeight() - 16f);
         hound.setActive(true);
         hound.setZIndex(99999f);
-        Light light = gameContext2D.getLightingManager().createPointLight(200f, Color.BLACK);
+        Light light = gameContext2D.getLightingManager().createPointLight(200f, Color.WHITE);
         gameContext2D.getLightingManager().attach(light, hound);
         GameObject player = null;
         for (GameObject o : gameContext2D.getGameWorld().getObjects()) {
@@ -34,7 +34,7 @@ public class LevelStageBootstrap implements LevelBootstrap {
             }
         }
         if (player != null) {
-            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player, gameContext2D.getEventManager()), hound);
+            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player, gameContext2D.getEventManager(), gameContext2D.getLightingManager()), hound);
         } else {
             throw new GdxRuntimeException("Unable to initialise hound! Player not found");
         }

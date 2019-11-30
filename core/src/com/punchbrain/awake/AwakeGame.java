@@ -49,7 +49,7 @@ public class AwakeGame extends BrainGdxGame {
       SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setLooping(true);
       SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setVolume(0.01f);
       SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).play();
-      return new LevelScreen(this, Assets.TiledMaps.BOYS_ROOM);
+      return new LevelScreen(this, Assets.TiledMaps.LEVEL_01);
    }
 
    private void configureSettings() {

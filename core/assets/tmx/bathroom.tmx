@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="10">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="11">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="interior.png" width="256" height="256"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eJzjYmBg4CYSc0ExKep1SVRvSmP1tkDMSSTmAWIACDYDpw==
+   eJzjYmBg4CYSc0ExKep1SVDPCsSmJKjnJUO9LRBzEolFgRgABz4DsQ==
   </data>
  </layer>
  <layer id="3" name="Tile Layer 2" width="12" height="6">
@@ -47,12 +47,21 @@
    </properties>
    <point/>
   </object>
-  <object id="9" type="light" x="364.5" y="83.25">
+  <object id="9" type="light" x="365.5" y="48.25">
    <properties>
     <property name="lighting.color" type="color" value="#462a00ff"/>
     <property name="lighting.range" type="float" value="300"/>
    </properties>
    <point/>
+  </object>
+  <object id="10" type="teleport" x="356.5" y="104.125" width="15" height="55.75">
+   <properties>
+    <property name="file" value="tmx/level-01.tmx"/>
+    <property name="id" value="door-right"/>
+    <property name="producer" value="PLAYER"/>
+    <property name="target" value="door-left"/>
+    <property name="trigger.enteronly" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

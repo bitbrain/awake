@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="124" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="34">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="124" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="39">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="interior.png" width="256" height="256"/>
  </tileset>
@@ -10,7 +10,7 @@
  </layer>
  <layer id="7" name="Tile Layer 2" width="124" height="12">
   <data encoding="base64" compression="zlib">
-   eJzt1bEKgDAMRdEMOhhx6OD//6odCm6SQKjiu8PZSpZbEjezPagN0XdPKmZE5uDmA7010FsLvbVke89Eb3rT+7+9UW+lt5Tjxd7s5W/1ztzLyH3N3GH+AL3ZBTW9l26DhLO7AFf/Qp8=
+   eJzt1TEKgDAMRuEsDlYcHHoMR0fvfy0zFNzKXwgWzBu+raTDK00xs010NOq5nogZyhy8SkPvHOidC71zGe39JXrTm97/7Y14C71T2d056W7+5Tm9L7FHr4uyX0f2MG+A3vwFMb1vtyKF6h52bENR
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
@@ -77,45 +77,48 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="26" x="160.888" y="127.473">
-   <properties>
-    <property name="lighting.color" type="color" value="#4f98ceff"/>
-    <property name="lighting.range" type="float" value="500"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="27" x="717.601" y="159.2">
-   <properties>
-    <property name="lighting.color" type="color" value="#3d98ceff"/>
-    <property name="lighting.range" type="float" value="500"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="28" x="550.1" y="50.5291">
-   <properties>
-    <property name="lighting.color" type="color" value="#4298ceff"/>
-    <property name="lighting.range" type="float" value="500"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="29" x="1072.55" y="102.965">
-   <properties>
-    <property name="lighting.color" type="color" value="#3d98ceff"/>
-    <property name="lighting.range" type="float" value="500"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="30" x="1534.94" y="325.102">
-   <properties>
-    <property name="lighting.color" type="color" value="#3398ceff"/>
-    <property name="lighting.range" type="float" value="500"/>
-   </properties>
-   <point/>
-  </object>
   <object id="33" x="194.792" y="288.818" width="186.417" height="74.3638">
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="34" type="teleport" x="9.5" y="275.25" width="15" height="79.5">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="file" value="tmx/bathroom.tmx"/>
+    <property name="id" value="door-left"/>
+    <property name="producer" value="PLAYER"/>
+    <property name="target" value="door-right"/>
+    <property name="trigger.enteronly" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="35" x="398" y="335">
+   <properties>
+    <property name="lighting.color" type="color" value="#283700ff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" x="798" y="338">
+   <properties>
+    <property name="lighting.color" type="color" value="#283700ff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="37" x="1272" y="339">
+   <properties>
+    <property name="lighting.color" type="color" value="#283700ff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" x="1558" y="41">
+   <properties>
+    <property name="lighting.color" type="color" value="#283700ff"/>
+    <property name="lighting.range" type="float" value="500"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

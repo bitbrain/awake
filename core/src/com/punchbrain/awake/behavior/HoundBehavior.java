@@ -1,5 +1,7 @@
 package com.punchbrain.awake.behavior;
 
+import static com.badlogic.gdx.math.MathUtils.clamp;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -8,6 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.punchbrain.awake.event.GameOverEvent;
 import de.bitbrain.braingdx.behavior.BehaviorAdapter;
 import de.bitbrain.braingdx.event.GameEventManager;
+import de.bitbrain.braingdx.graphics.lighting.LightingManager;
+import de.bitbrain.braingdx.util.Colors;
 import de.bitbrain.braingdx.util.DeltaTimer;
 import de.bitbrain.braingdx.world.GameObject;
 
@@ -22,10 +26,12 @@ public class HoundBehavior extends BehaviorAdapter {
     private Vector2 target;
     private final Queue<Vector2> snapshots = new LinkedList<Vector2>();
     private final GameEventManager eventManager;
+    private final LightingManager lightingManager;
 
-    public HoundBehavior(GameObject player, GameEventManager eventManager) {
+    public HoundBehavior(GameObject player, GameEventManager eventManager, LightingManager lightingManager) {
         this.player = player;
         this.eventManager = eventManager;
+        this.lightingManager = lightingManager;
     }
 
     @Override
@@ -58,6 +64,11 @@ public class HoundBehavior extends BehaviorAdapter {
         if (player.collidesWith(hound)) {
             eventManager.publish(new GameOverEvent());
         }
+
+        // update ambient light depending on distance
+        float distance = player.getPosition().cpy().sub(hound.getPosition()).len();
+        float ratio = clamp(250f / distance, 0.7f, 2f);
+        lightingManager.setAmbientLight(Colors.darken(com.punchbrain.awake.Colors.BACKGROUND, ratio));
     }
 
     private boolean readyToPoll(GameObject hound) {

@@ -46,7 +46,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
       if (PLAYER.isTypeOf(object)) {
          context.getGameCamera().setTrackingTarget(object);
          context.getGameCamera().setTargetTrackingSpeed(0.02f);
-         context.getGameCamera().setDefaultZoomFactor(0.2f);
+         context.getGameCamera().setDefaultZoomFactor(0.5f);
          object.setDimensions(32, 64);
          BodyDef playerBodyDef = new BodyDef();
          playerBodyDef.type = BodyDef.BodyType.DynamicBody;
