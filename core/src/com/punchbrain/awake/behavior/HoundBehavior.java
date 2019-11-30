@@ -5,7 +5,9 @@ import java.util.Queue;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.punchbrain.awake.event.GameOverEvent;
 import de.bitbrain.braingdx.behavior.BehaviorAdapter;
+import de.bitbrain.braingdx.event.GameEventManager;
 import de.bitbrain.braingdx.util.DeltaTimer;
 import de.bitbrain.braingdx.world.GameObject;
 
@@ -19,9 +21,11 @@ public class HoundBehavior extends BehaviorAdapter {
 
     private Vector2 target;
     private final Queue<Vector2> snapshots = new LinkedList<Vector2>();
+    private final GameEventManager eventManager;
 
-    public HoundBehavior(GameObject player) {
+    public HoundBehavior(GameObject player, GameEventManager eventManager) {
         this.player = player;
+        this.eventManager = eventManager;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class HoundBehavior extends BehaviorAdapter {
 
         // check if hound got the boy
         if (player.collidesWith(hound)) {
-            Gdx.app.log("UPDATE", "GAME OVER!!!");
+            eventManager.publish(new GameOverEvent());
         }
     }
 

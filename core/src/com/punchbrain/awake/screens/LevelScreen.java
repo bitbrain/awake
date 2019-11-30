@@ -39,6 +39,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
    private PlayerInitialiser playerInitialiser;
    private final String targetSpawnId;
    private final String tiledMapFile;
+   private GameContext2D context;
 
    public LevelScreen(AwakeGame game, String tiledMapFile, String targetSpawnId) {
       super(game);
@@ -52,10 +53,14 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
       this.tiledMapFile = tiledMapFile;
    }
 
+   public void reset() {
+      context.getScreenTransitions().out(new LevelScreen(getGame(), tiledMapFile, targetSpawnId), 0.3f);
+   }
+
 
    @Override
    protected void onCreate(GameContext2D context) {
-
+      this.context = context;
       context.getScreenTransitions().in(0.5f);
       context.setBackgroundColor(Colors.BACKGROUND);
       setupGraphics(context);

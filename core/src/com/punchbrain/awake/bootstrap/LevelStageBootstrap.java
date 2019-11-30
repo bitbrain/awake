@@ -34,7 +34,7 @@ public class LevelStageBootstrap implements LevelBootstrap {
             }
         }
         if (player != null) {
-            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player), hound);
+            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player, gameContext2D.getEventManager()), hound);
         } else {
             throw new GdxRuntimeException("Unable to initialise hound! Player not found");
         }
