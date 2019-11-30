@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="16">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="21">
  <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="interior.png" width="256" height="256"/>
  </tileset>
@@ -13,6 +13,25 @@
    eJxjYBg+QJAGZgIABrQAEg==
   </data>
  </layer>
+ <objectgroup id="4" name="lights">
+  <object id="5" type="teleport" x="352.829" y="89.75" width="15" height="79.5">
+   <properties>
+    <property name="collision" type="bool" value="false"/>
+    <property name="file" value="tmx/hallway.tmx"/>
+    <property name="id" value="door-right"/>
+    <property name="producer" value="PLAYER"/>
+    <property name="target" value="door-left"/>
+    <property name="trigger.enteronly" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="13" type="light" x="128.25" y="97">
+   <properties>
+    <property name="lighting.color" type="color" value="#961d00ff"/>
+    <property name="lighting.range" type="float" value="350"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
  <layer id="6" name="interior" width="12" height="6">
   <data encoding="base64" compression="zlib">
    eJxjYCAdcONgUwpYSVTPi8Yn5BZ09cQAACMcAEE=
@@ -34,41 +53,36 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="4" name="lights">
-  <object id="1" type="PLAYER" x="67.6636" y="161.208">
+  <object id="16" type="PLAYER" x="69" y="152">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="lighting.color" type="color" value="#a6ffa280"/>
    </properties>
    <point/>
   </object>
-  <object id="5" type="teleport" x="352.829" y="89.75" width="15" height="79.5">
-   <properties>
-    <property name="collision" type="bool" value="false"/>
-    <property name="file" value="tmx/hallway.tmx"/>
-    <property name="id" value="door-right"/>
-    <property name="producer" value="PLAYER"/>
-    <property name="target" value="door-left"/>
-    <property name="trigger.enteronly" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="13" type="light" x="128.25" y="97">
-   <properties>
-    <property name="lighting.color" type="color" value="#961d00ff"/>
-    <property name="lighting.range" type="float" value="350"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="14" type="circuit_lamp" x="129" y="50">
+ </objectgroup>
+ <objectgroup id="9" name="circuits">
+  <object id="17" type="circuit_lamp" x="97" y="57">
    <properties>
     <property name="circuit_id" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="15" type="circuit_flip_switch" x="179" y="121">
+  <object id="18" type="circuit_flip_switch" x="47" y="133">
    <properties>
     <property name="circuit_id" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" type="circuit_lamp" x="295" y="62">
+   <properties>
+    <property name="circuit_id" value="2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" type="circuit_flip_switch" x="225" y="133">
+   <properties>
+    <property name="circuit_id" value="2"/>
    </properties>
    <point/>
   </object>

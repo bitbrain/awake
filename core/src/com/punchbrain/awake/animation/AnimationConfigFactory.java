@@ -56,5 +56,21 @@ public interface AnimationConfigFactory {
                     .playMode(Animation.PlayMode.LOOP)
                     .build()).build();
 
+    public static AnimationConfig lampAnimationConfig = AnimationConfig.builder()
+            .registerFrames(LampState.OFF, AnimationFrames.builder()
+                    .frames(1)
+                    .origin(0, 0)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build())
+            .registerFrames(LampState.ON, AnimationFrames.builder()
+                    .frames(1)
+                    .origin(1, 0)
+                    .duration(0.2f)
+                    .direction(AnimationFrames.Direction.HORIZONTAL)
+                    .playMode(Animation.PlayMode.LOOP)
+                    .build()).build();
+
 }
 

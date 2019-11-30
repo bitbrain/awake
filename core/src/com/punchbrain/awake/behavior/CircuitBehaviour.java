@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.punchbrain.awake.animation.LampState;
 import com.punchbrain.awake.model.Circuit;
 import de.bitbrain.braingdx.behavior.BehaviorAdapter;
 import de.bitbrain.braingdx.context.GameContext;
@@ -28,8 +29,20 @@ public class CircuitBehaviour extends BehaviorAdapter {
     }
 
     @Override
+    public void update(GameObject source, float delta){
+        if(circuit.isOn()){
+            circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.ON);
+            circuit.getLampGameObject().setAttribute(LampState.class, LampState.ON);
+        } else {
+            circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.OFF);
+            circuit.getLampGameObject().setAttribute(LampState.class, LampState.OFF);
+        }
+    }
+
+    @Override
     public void update(GameObject source, GameObject player, float delta) {
         if(PLAYER.isTypeOf(player)){
+            System.out.println(player.getZIndex());
             Rectangle playerRect = new Rectangle();
             playerRect.set(player.getLeft(), player.getTop(), player.getWidth(), player.getHeight());
             Rectangle circuitRect = new Rectangle();

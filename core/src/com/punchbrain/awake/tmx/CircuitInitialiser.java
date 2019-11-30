@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.punchbrain.awake.GameObjectType;
+import com.punchbrain.awake.animation.LampState;
 import com.punchbrain.awake.animation.PlayerDirection;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.behavior.CircuitBehaviour;
@@ -47,6 +48,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
    public void onEvent(TiledMapEvents.OnLoadGameObjectEvent event) {
       final GameObject object = event.getObject();
       if (CIRCUIT_LAMP.isTypeOf(object)) {
+         object.setDimensions(26,26);
          String circuitId = object.getAttribute("circuit_id", String.class);
          GameObject circuitFlipSwitch = circuitPairMap.get(circuitId);
          if(circuitFlipSwitch == null){
@@ -54,18 +56,23 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
          } else {
             Light light = context.getLightingManager().createPointLight(100, Color.GOLD);
             context.getLightingManager().attach(light, object);
+            object.setAttribute(LampState.class, LampState.ON);
+            circuitFlipSwitch.setAttribute(LampState.class, LampState.ON);
             Circuit circuit = new Circuit(object, circuitFlipSwitch, light);
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, circuitFlipSwitch);
          }
       } else if (CIRCUIT_FLIP_SWITCH.isTypeOf(object)) {
+         object.setDimensions(26,26);
          String circuitId = object.getAttribute("circuit_id", String.class);
          GameObject circuitLamp = circuitPairMap.get(circuitId);
          if(circuitLamp == null){
             circuitPairMap.put(circuitId, object);
          } else {
             Light light = context.getLightingManager().createPointLight(100, Color.GOLD);
-            context.getLightingManager().attach(light, circuitLamp);
+            context.getLightingManager().attach(light, circuitLamp, true);
+            object.setAttribute(LampState.class, LampState.ON);
+            circuitLamp.setAttribute(LampState.class, LampState.ON);
             Circuit circuit = new Circuit(circuitLamp, object, light);
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, object);
