@@ -3,6 +3,7 @@ package com.punchbrain.awake.tmx;
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
+import aurelienribon.tweenengine.TweenEquations;
 import box2dLight.Light;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
@@ -21,6 +22,7 @@ import com.punchbrain.awake.model.Player;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.event.GameEventListener;
 import de.bitbrain.braingdx.tmx.TiledMapEvents;
+import de.bitbrain.braingdx.tweens.PointLight2DTween;
 import de.bitbrain.braingdx.tweens.SharedTweenManager;
 import de.bitbrain.braingdx.world.GameObject;
 
@@ -54,7 +56,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
          if(circuitFlipSwitch == null){
             circuitPairMap.put(circuitId, object);
          } else {
-            Light light = context.getLightingManager().createPointLight(100, Color.GOLD);
+            Light light = context.getLightingManager().createPointLight(0, Color.GOLD);
             context.getLightingManager().attach(light, object);
             object.setAttribute(LampState.class, LampState.ON);
             circuitFlipSwitch.setAttribute(LampState.class, LampState.ON);
@@ -69,7 +71,15 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
          if(circuitLamp == null){
             circuitPairMap.put(circuitId, object);
          } else {
-            Light light = context.getLightingManager().createPointLight(100, Color.GOLD);
+            Light light = context.getLightingManager().createPointLight(0, Color.GOLD);
+            /*
+            Tween.to(light, PointLight2DTween.DISTANCE, 0.9f)
+                    .target(205f)
+                    .ease(TweenEquations.easeOutElastic)
+                    .repeat(Tween.INFINITY, 0f)
+                    .start(SharedTweenManager.getInstance());
+
+             */
             context.getLightingManager().attach(light, circuitLamp, true);
             object.setAttribute(LampState.class, LampState.ON);
             circuitLamp.setAttribute(LampState.class, LampState.ON);
