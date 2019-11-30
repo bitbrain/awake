@@ -1,6 +1,5 @@
 package com.punchbrain.awake.event;
 
-import com.punchbrain.awake.GameObjectType;
 import de.bitbrain.braingdx.event.GameEvent;
 import de.bitbrain.braingdx.event.GameEventFactory;
 import de.bitbrain.braingdx.world.GameObject;

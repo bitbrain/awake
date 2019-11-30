@@ -3,13 +3,10 @@ package com.punchbrain.awake;
 import de.bitbrain.braingdx.world.GameObject;
 
 public enum GameObjectType {
-   PLAYER,
-   COLLISION,
-   TELEPORT,
-   LIGHT;
+    PLAYER, COLLISION, TELEPORT, LIGHT, HOUND;
 
-   public boolean isTypeOf(GameObject object) {
-      return object.getType() != null && this.name().equalsIgnoreCase(object.getType().toString());
-   }
+    public boolean isTypeOf(GameObject object) {
+        return object.getType() != null && this.name().equalsIgnoreCase(object.getType().toString());
+    }
 
 }

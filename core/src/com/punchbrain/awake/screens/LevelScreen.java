@@ -3,12 +3,18 @@ package com.punchbrain.awake.screens;
 import static com.punchbrain.awake.GameObjectType.PLAYER;
 import static com.punchbrain.awake.util.TmxUtil.loadTiledMap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.punchbrain.awake.AwakeGame;
 import com.punchbrain.awake.Colors;
 import com.punchbrain.awake.animation.AnimationConfigFactory;
 import com.punchbrain.awake.animation.PlayerDirection;
 import com.punchbrain.awake.assets.Assets;
+import com.punchbrain.awake.bootstrap.BootstrapFactory;
+import com.punchbrain.awake.bootstrap.LevelBootstrap;
+import com.punchbrain.awake.bootstrap.LevelStageBootstrap;
 import com.punchbrain.awake.event.AwakeEventFactory;
 import com.punchbrain.awake.event.TeleportEvent;
 import com.punchbrain.awake.event.TeleportEventListener;
@@ -54,14 +60,17 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
       context.setBackgroundColor(Colors.BACKGROUND);
       setupGraphics(context);
       setupEvents(context);
-      setupTiled(context);
+      TiledMapContext tmxContext = setupTiled(context);
       setupPhysics(context);
       setupInput(context.getInputManager());
+
+      bootstrap(context, tmxContext);
    }
 
-   private void setupTiled(GameContext2D context) {
+   private TiledMapContext setupTiled(GameContext2D context) {
       TiledMapContext tmxContext = loadTiledMap(tiledMapFile, context);
       tmxContext.setEventFactory(new AwakeEventFactory());
+      return tmxContext;
    }
 
    private void setupEvents(GameContext2D context) {
@@ -97,5 +106,13 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    private void setupPhysics(GameContext2D context) {
       context.getPhysicsManager().setGravity(0f, -98);
+   }
+
+   private void bootstrap(final GameContext2D context, final TiledMapContext tmxContext) {
+      for (LevelBootstrap bootstrap : BootstrapFactory.getBoostraps()) {
+         if (bootstrap.isApplicable(tiledMapFile)) {
+            bootstrap.boostrap(context, tmxContext);
+         }
+      }
    }
 }

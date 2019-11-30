@@ -19,10 +19,10 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="9" type="PLAYER" x="160.237" y="320.116">
+  <object id="9" type="PLAYER" x="69.2367" y="331.116">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="lighting.color" type="color" value="#bdff816a"/>
+    <property name="lighting.color" type="color" value="#8cff816a"/>
    </properties>
    <point/>
   </object>
@@ -66,12 +66,6 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="23" x="32.0041" y="321.083" width="33.909" height="30.361">
-   <properties>
-    <property name="collision" type="bool" value="false"/>
-    <property name="physics.enabled" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="24" x="356.087" y="4.90667" width="56.2494" height="120.698">
    <properties>
     <property name="collision" type="bool" value="false"/>
@@ -85,50 +79,38 @@
   </object>
   <object id="26" x="160.888" y="127.473">
    <properties>
-    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.color" type="color" value="#4f98ceff"/>
     <property name="lighting.range" type="float" value="500"/>
    </properties>
    <point/>
   </object>
-  <object id="27" x="384.601" y="192.2">
+  <object id="27" x="717.601" y="159.2">
    <properties>
-    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.color" type="color" value="#3d98ceff"/>
     <property name="lighting.range" type="float" value="500"/>
    </properties>
    <point/>
   </object>
   <object id="28" x="550.1" y="50.5291">
    <properties>
-    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.color" type="color" value="#4298ceff"/>
     <property name="lighting.range" type="float" value="500"/>
    </properties>
    <point/>
   </object>
   <object id="29" x="1072.55" y="102.965">
    <properties>
-    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.color" type="color" value="#3d98ceff"/>
     <property name="lighting.range" type="float" value="500"/>
    </properties>
    <point/>
   </object>
   <object id="30" x="1534.94" y="325.102">
    <properties>
-    <property name="lighting.color" type="color" value="#ff98ceff"/>
+    <property name="lighting.color" type="color" value="#3398ceff"/>
     <property name="lighting.range" type="float" value="500"/>
    </properties>
    <point/>
-  </object>
-  <object id="31" x="64" y="288" width="33.909" height="30.361">
-   <properties>
-    <property name="collision" type="bool" value="false"/>
-    <property name="physics.enabled" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="32" x="66.0455" y="351.82" width="33.909" height="30.361">
-   <properties>
-    <property name="collision" type="bool" value="false"/>
-    <property name="physics.enabled" type="bool" value="true"/>
-   </properties>
   </object>
   <object id="33" x="194.792" y="288.818" width="186.417" height="74.3638">
    <properties>
