@@ -6,10 +6,8 @@ import box2dLight.Light;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.punchbrain.awake.GameObjectType;
-import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.behavior.HoundBehavior;
 import de.bitbrain.braingdx.context.GameContext2D;
-import de.bitbrain.braingdx.graphics.renderer.SpriteRenderer;
 import de.bitbrain.braingdx.tmx.TiledMapContext;
 import de.bitbrain.braingdx.world.GameObject;
 
@@ -24,7 +22,7 @@ public class LevelStageBootstrap implements LevelBootstrap {
         hound.setPosition(0f, tiledMapContext.getWorldHeight() - 16f);
         hound.setActive(true);
         hound.setZIndex(99999f);
-        Light light = gameContext2D.getLightingManager().createPointLight(200f, Color.WHITE);
+        Light light = gameContext2D.getLightingManager().createPointLight(200f, Color.valueOf("331100"));
         gameContext2D.getLightingManager().attach(light, hound);
         GameObject player = null;
         for (GameObject o : gameContext2D.getGameWorld().getObjects()) {
