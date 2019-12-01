@@ -4,10 +4,7 @@ import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.*;
 import com.punchbrain.awake.animation.PlayerDirection;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.behavior.PlayerUpdateBehavior;
@@ -52,21 +49,21 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
          playerBodyDef.type = BodyDef.BodyType.DynamicBody;
          playerBodyDef.position.set(object.getLeft() + object.getWidth() / 2f, object.getTop() + object.getHeight() / 2f);
          playerBodyDef.fixedRotation = true;
-         FixtureDef fixtureDef = new FixtureDef();
-         PolygonShape shape = new PolygonShape();
-         shape.set(new float[]{
-                 -16f, 16f,
-                 0f, 32f,
-                 16f, 16f,
+         FixtureDef bodyFixtureDef = new FixtureDef();
+         PolygonShape playerBody = new PolygonShape();
+         playerBody.set(new float[]{
+                 -8f, 2f,
+                 0f, 4f,
+                 8f, 2f,
                  -8f, -32f,
                  8f, -32f
          });
-         fixtureDef.shape = shape;
-         fixtureDef.density = 0.00001f;
-         fixtureDef.friction = 0f;
-         fixtureDef.restitution = 0f;
+         bodyFixtureDef.shape = playerBody;
+         bodyFixtureDef.density = 0.00001f;
+         bodyFixtureDef.friction = 0f;
+         bodyFixtureDef.restitution = 0f;
 
-         Body body = context.getPhysicsManager().attachBody(playerBodyDef, fixtureDef, object);
+         Body body = context.getPhysicsManager().attachBody(playerBodyDef, bodyFixtureDef, object);
          this.player = new Player(object, body);
          this.playerObject = object;
          playerObject.setAttribute(PlayerDirection.class, PlayerDirection.STANDING_LEFT);
