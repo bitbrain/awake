@@ -40,9 +40,6 @@ public class HoundBehavior extends BehaviorAdapter {
         if (timer.reached(SNAPSHOT_INTERVAL)) {
             timer.reset();
             snapshots.add(player.getPosition().cpy());
-            if (target != null) {
-                System.out.println(target);
-            }
             if (snapshots.size() > MAX_SNAPSHOT_SIZE) {
                 target = snapshots.poll();
             }

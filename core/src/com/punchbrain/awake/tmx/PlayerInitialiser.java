@@ -97,6 +97,7 @@ public class PlayerInitialiser implements GameEventListener<TiledMapEvents.OnLoa
       playerBodyDef.type = BodyDef.BodyType.DynamicBody;
       playerBodyDef.position.set(object.getLeft() + object.getWidth() / 2f, object.getTop() + object.getHeight() / 2f);
       playerBodyDef.fixedRotation = true;
+      playerBodyDef.gravityScale = 2f;
       return playerBodyDef;
    }
 

@@ -14,7 +14,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
-  <object id="3" type="teleport" x="9.7727" y="80.7954" width="15" height="86.5">
+  <object id="3" type="teleport" x="15.5227" y="79.0454" width="15" height="86.5">
    <properties>
     <property name="file" value="tmx/boys-room.tmx"/>
     <property name="id" value="door-left"/>
@@ -30,7 +30,7 @@
    </properties>
    <point/>
   </object>
-  <object id="5" type="teleport" x="744.112" y="116.993" width="15" height="54.8333">
+  <object id="5" type="teleport" x="739.567" y="105.902" width="15" height="54.8333">
    <properties>
     <property name="file" value="tmx/bathroom.tmx"/>
     <property name="id" value="door-right"/>
@@ -50,12 +50,12 @@
    </properties>
    <point/>
   </object>
-  <object id="14" x="7.88433" y="178.88" width="760.08" height="12.239">
+  <object id="14" x="7.88433" y="178.88" width="754.625" height="12.239">
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="15" x="761.096" y="-10.6195" width="11.3525" height="202.239">
+  <object id="15" x="762.369" y="-9.34677" width="11.3525" height="202.239">
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>

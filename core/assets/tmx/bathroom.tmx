@@ -35,7 +35,7 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="5" type="COLLISION" x="379.301" y="-2.3695" width="4.898" height="177.239">
+  <object id="5" type="COLLISION" x="379.301" y="-2.3695" width="4.898" height="180.989">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="physics.enabled" type="bool" value="true"/>

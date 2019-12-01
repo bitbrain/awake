@@ -38,7 +38,6 @@ public class CircuitBehaviour extends BehaviorAdapter {
     @Override
     public void update(GameObject source, GameObject player, float delta) {
         if(PLAYER.isTypeOf(player)){
-            System.out.println(player.getZIndex());
             Rectangle playerRect = new Rectangle();
             playerRect.set(player.getLeft(), player.getTop(), player.getWidth(), player.getHeight());
             Rectangle circuitRect = new Rectangle();
