@@ -22,7 +22,6 @@ public class CircuitBehaviour extends BehaviorAdapter {
     public CircuitBehaviour(Circuit circuit, GameContext2D context){
         this.circuit = circuit;
         this.context = context;
-        this.lampLight = context.getLightingManager().createPointLight(200, Color.GOLD);
     }
 
     @Override

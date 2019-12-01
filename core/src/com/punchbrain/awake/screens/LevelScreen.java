@@ -130,7 +130,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
                 }));
         LightingConfig lightingConfig = new LightingConfig();
         lightingConfig.rays(200);
-        lightingConfig.blur(false);
+        lightingConfig.blur(true);
         context.getLightingManager().setConfig(lightingConfig);
         context.getLightingManager().setAmbientLight(Colors.BACKGROUND);
 

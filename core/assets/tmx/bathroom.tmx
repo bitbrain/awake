@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="11">
- <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
-  <image source="interior.png" width="256" height="256"/>
+ <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="interior.png" width="512" height="512"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAHjYmBg4CYScwHVgTAp6nVJUM8KVGtKgnpeMtTbAvVwEolFgeoABz4DsQ==
+   eAETYmBgECYSCwHVgTAp6kNJUM8KVJtKgnpRMtSXAvUIEolVgeoAkc0GkQ==
   </data>
  </layer>
  <layer id="3" name="Tile Layer 2" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAFjYBh6wAzoZHMSnG0HVGtPgnpkpQBKkADr
+   eAFjYBh6IA3oZGESnA1SS4p6ZKMBPHwAoA==
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
@@ -47,7 +47,7 @@
    </properties>
    <point/>
   </object>
-  <object id="9" type="light" x="365.5" y="48.25">
+  <object id="9" type="light" x="225" y="58.25">
    <properties>
     <property name="lighting.color" type="color" value="#462a00ff"/>
     <property name="lighting.range" type="float" value="300"/>

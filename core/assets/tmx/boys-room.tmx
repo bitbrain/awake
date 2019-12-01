@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="22">
- <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="64" columns="8">
-  <image source="interior.png" width="256" height="256"/>
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="12" height="6" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="24">
+ <tileset firstgid="1" name="interior" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="interior.png" width="512" height="512"/>
  </tileset>
  <layer id="3" name="background" width="12" height="6">
   <data encoding="base64" compression="zlib">
-   eAHjYmBg4CYScwHVgTC56tmAetnx6Ec3nw+olp8E9YTcBTKfBYg5icSiQHUAuFMC/A==
+   eAETYmBgECYSCwHVgTCt1LOSaL4oGepZgHoEicSqQHUA/H4FNw==
   </data>
  </layer>
- <layer id="8" name="Tile Layer 3" width="12" height="6">
+ <layer id="6" name="interior" width="12" height="6" offsetx="0" offsety="16">
   <data encoding="base64" compression="zlib">
-   eAFjYBg+QJAGXgEABrQAEg==
+   eAFjYKAMCKNpZwPy2dHE8HHFgJLiaAok0PjIXDUgRx1ZAMjWAGIOIOYEYi4g5gZiagEAgKQBAQ==
   </data>
  </layer>
- <objectgroup id="4" name="lights">
-  <object id="13" type="light" x="128.25" y="97">
-   <properties>
-    <property name="lighting.color" type="color" value="#961d00ff"/>
-    <property name="lighting.range" type="float" value="350"/>
-   </properties>
-   <point/>
-  </object>
- </objectgroup>
- <layer id="6" name="interior" width="12" height="6">
-  <data encoding="base64" compression="zlib">
-   eAFjYCAdcCNpQWYjCZPFZCVRFy+aekJuQVePph0rFwAjHABB
-  </data>
- </layer>
+ <objectgroup id="4" name="lights"/>
  <objectgroup id="7" name="collisions">
-  <object id="4" x="9.10536" y="177.856" width="423.398" height="4.13633">
+  <object id="4" x="5.10536" y="184.22" width="426.307" height="4.13633">
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="11" x="1.301" y="-0.971573" width="4.898" height="184.33">
+  <object id="11" x="1.301" y="-0.971573" width="4.898" height="189.057">
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
@@ -43,7 +30,7 @@
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="16" type="PLAYER" x="69" y="152">
+  <object id="16" type="PLAYER" x="125.75" y="151.875">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="lighting.color" type="color" value="#a6ffa280"/>
@@ -51,7 +38,7 @@
    </properties>
    <point/>
   </object>
-  <object id="21" type="teleport" x="356.5" y="85.5" width="15" height="79.5">
+  <object id="21" type="teleport" x="357.227" y="90.5909" width="15" height="89.1364">
    <properties>
     <property name="collision" type="bool" value="false"/>
     <property name="file" value="tmx/hallway.tmx"/>
@@ -61,29 +48,24 @@
     <property name="trigger.enteronly" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="22" type="light" x="289.25" y="97.75">
+   <properties>
+    <property name="lighting.color" type="color" value="#b41d00ff"/>
+    <property name="lighting.range" type="float" value="450"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="circuits">
-  <object id="17" type="circuit_lamp" x="97" y="57">
+  <object id="17" type="circuit_lamp" x="128.25" y="98.25">
    <properties>
     <property name="circuit_id" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="18" type="circuit_flip_switch" x="47" y="133">
+  <object id="18" type="circuit_flip_switch" x="225.034" y="131.125">
    <properties>
     <property name="circuit_id" value="1"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="19" type="circuit_lamp" x="295" y="62">
-   <properties>
-    <property name="circuit_id" value="2"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="20" type="circuit_flip_switch" x="225" y="133">
-   <properties>
-    <property name="circuit_id" value="2"/>
    </properties>
    <point/>
   </object>
