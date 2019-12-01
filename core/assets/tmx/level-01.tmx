@@ -22,7 +22,8 @@
   <object id="9" type="PLAYER" x="69.2367" y="331.116">
    <properties>
     <property name="collision" type="bool" value="false"/>
-    <property name="lighting.color" type="color" value="#30ff816a"/>
+    <property name="lighting.color" type="color" value="#19ff816a"/>
+    <property name="lighting.range" type="float" value="200"/>
    </properties>
    <point/>
   </object>

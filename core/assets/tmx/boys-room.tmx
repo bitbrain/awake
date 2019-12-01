@@ -29,7 +29,7 @@
  </objectgroup>
  <layer id="6" name="interior" width="12" height="6" offsetx="0" offsety="16">
   <data encoding="base64" compression="zlib">
-   eAFjYKAMCKNpZwPy2dHE8HHFgJLiaAok0PjIXDUgRx1ZAMjWAGIOIOYEYi4g5gZiagEAgKQBAQ==
+   eAFjYKAuYAMax06CkWJAteJo6iXQ+MhcNSBHHVkAyNYAYg4g5gRiLiDmBmJqAQBwBADu
   </data>
  </layer>
  <objectgroup id="4" name="lights"/>
