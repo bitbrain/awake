@@ -29,13 +29,20 @@ public class LevelKeyboardInputAdapter extends InputAdapter implements Updateabl
    }
 
    @Override
+   public boolean keyUp(int keycode) {
+      if (keycode == A || keycode == LEFT || keycode == D || keycode == RIGHT) {
+         player.stop();
+         return true;
+      }
+      return super.keyUp(keycode);
+   }
+
+   @Override
    public void update(float delta) {
       if (areKeysPressed(A, LEFT)) {
          player.moveLeft();
       } else if (areKeysPressed(D, RIGHT)) {
          player.moveRight();
-      } else {
-         player.stop();
       }
       if (areKeysPressed(SPACE)) {
          player.jump();

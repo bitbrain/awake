@@ -96,7 +96,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
     }
 
     private void setupInput(InputManager inputManager) {
-        inputManager.register(new LevelControllerInputAdapter(this));
+        inputManager.register(new LevelControllerInputAdapter(this, playerInitialiser.getPlayer()));
         inputManager.register(new LevelKeyboardInputAdapter(this, playerInitialiser.getPlayer()));
     }
 
