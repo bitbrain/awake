@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.punchbrain.awake.model.Player;
 import com.punchbrain.awake.screens.LevelScreen;
+import com.punchbrain.awake.ui.Toast;
 import de.bitbrain.braingdx.util.Updateable;
 
 import static com.badlogic.gdx.Input.Keys.*;

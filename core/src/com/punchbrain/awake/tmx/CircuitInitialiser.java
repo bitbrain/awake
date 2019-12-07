@@ -61,7 +61,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
             context.getLightingManager().attach(light, object);
             object.setAttribute(LampState.class, LampState.ON);
             circuitFlipSwitch.setAttribute(LampState.class, LampState.ON);
-            Circuit circuit = new Circuit(object, circuitFlipSwitch, light);
+            Circuit circuit = new Circuit(object, circuitFlipSwitch, light, context.getAudioManager());
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, circuitFlipSwitch);
          }
@@ -84,7 +84,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
             context.getLightingManager().attach(light, circuitLamp, true);
             object.setAttribute(LampState.class, LampState.ON);
             circuitLamp.setAttribute(LampState.class, LampState.ON);
-            Circuit circuit = new Circuit(circuitLamp, object, light);
+            Circuit circuit = new Circuit(circuitLamp, object, light, context.getAudioManager());
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, object);
          }
