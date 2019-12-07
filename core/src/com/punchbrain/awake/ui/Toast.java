@@ -51,10 +51,13 @@ public class Toast {
       toast.setHeight(Gdx.graphics.getHeight());
       toast.getColor().a = 0.0f;
       toast.setText(text);
-      Tween.to(toast, ActorTween.ALPHA, 1.3f).delay(0.3f)
-            .delay(0.3f)
-            .target(1f)
-            .repeatYoyo(1, 1f)
+      Tween.to(toast, ActorTween.ALPHA, 1.7f)
+            .target(0.8f)
+            .repeatYoyo(1, 0f)
+            .ease(TweenEquations.easeInQuad)
+            .start(tweenManager);
+      Tween.to(toast, ActorTween.X, 3.4f)
+            .target(toast.getX() + 128f)
             .ease(TweenEquations.easeInQuad)
             .start(tweenManager);
    }
