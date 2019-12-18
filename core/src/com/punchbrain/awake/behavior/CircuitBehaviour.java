@@ -11,6 +11,9 @@ import de.bitbrain.braingdx.world.GameObject;
 
 import static com.punchbrain.awake.GameObjectType.PLAYER;
 
+/**
+ * Adds Circuit behaviours. Is applied to a flipSwitch game object, not a lamp object.
+ */
 public class CircuitBehaviour extends BehaviorAdapter {
 
     private Circuit circuit;
@@ -27,14 +30,7 @@ public class CircuitBehaviour extends BehaviorAdapter {
 
     @Override
     public void update(GameObject source, float delta){
-        if(circuit.isOn()){
-            circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.ON);
-            circuit.getLampGameObject().setAttribute(LampState.class, LampState.ON);
-            circuit.increaseDelta(delta);
-        } else {
-            circuit.getFlipSwitchGameObject().setAttribute(LampState.class, LampState.OFF);
-            circuit.getLampGameObject().setAttribute(LampState.class, LampState.OFF);
-        }
+        circuit.updatePassiveBehaviour(delta);
     }
 
     @Override
@@ -45,14 +41,7 @@ public class CircuitBehaviour extends BehaviorAdapter {
             Rectangle circuitRect = new Rectangle();
             circuitRect.set(source.getLeft(), source.getTop(), source.getWidth(), source.getHeight());
             if(playerRect.contains(circuitRect) || playerRect.overlaps(circuitRect)){
-                if(!continuous) {
-                    circuit.flipSwitch();
-                    float distance = circuit.isOn() ? 200 : 0;
-                    circuit.getLightObject().setDistance(distance);
-                    continuous = true;
-                }
-            } else {
-                continuous = false;
+                circuit.resolvePlayerCollision();
             }
         }
         super.update(source, delta);
