@@ -23,9 +23,15 @@ public interface Assets {
    interface Sounds {
       String DOOR_OPEN = "sounds/door-open.ogg";
       String DOOR_CLOSE = "sounds/door-shut.ogg";
+      String SWITCH_ON = "sounds/switch-on.ogg";
+      String SWITCH_OFF = "sounds/switch-off.ogg";
    }
 
    interface Particles {
       // TODO
+   }
+
+   interface Fonts {
+      String CODERS_CRUX = "fonts/coderscrux.ttf";
    }
 }

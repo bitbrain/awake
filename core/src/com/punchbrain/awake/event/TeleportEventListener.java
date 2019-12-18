@@ -2,7 +2,6 @@ package com.punchbrain.awake.event;
 
 import com.punchbrain.awake.GameObjectType;
 import com.punchbrain.awake.assets.Assets;
-import com.punchbrain.awake.model.Player;
 import com.punchbrain.awake.screens.LevelScreen;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.event.GameEventListener;

@@ -14,11 +14,14 @@ public class AwakeEventFactory implements GameEventFactory {
          final String target = eventObject.getAttribute("target", String.class);
          return new TeleportEvent(file, id, target, producerObject);
       }
+      if ("text".equals(eventObject.getType())) {
+         return new TextEvent(eventObject.getAttribute("message", String.class));
+      }
       return null;
    }
 
    @Override
    public Object[] identifiers() {
-      return new Object[]{"teleport"};
+      return new Object[]{"teleport", "text"};
    }
 }

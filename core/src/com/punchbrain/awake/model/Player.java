@@ -54,7 +54,7 @@ public class Player {
    public void jump() {
       if (getState() == JumpState.WALKING) {
          body.setLinearVelocity(body.getLinearVelocity().x, 0f);
-         body.applyForceToCenter(0, 20060f, true);
+         body.applyForceToCenter(0, 10060f, true);
       }
       previousState = getState();
    }

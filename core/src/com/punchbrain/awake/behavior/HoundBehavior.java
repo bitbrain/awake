@@ -17,8 +17,8 @@ import de.bitbrain.braingdx.world.GameObject;
 
 public class HoundBehavior extends BehaviorAdapter {
 
-    private static final float SNAPSHOT_INTERVAL = 5f;
-    private static final float MAX_SNAPSHOT_SIZE = 5;
+    private static final float SNAPSHOT_INTERVAL = 10f;
+    private static final float MAX_SNAPSHOT_SIZE = 3;
 
     private final GameObject player;
     private final DeltaTimer timer = new DeltaTimer();
@@ -40,9 +40,6 @@ public class HoundBehavior extends BehaviorAdapter {
         if (timer.reached(SNAPSHOT_INTERVAL)) {
             timer.reset();
             snapshots.add(player.getPosition().cpy());
-            if (target != null) {
-                System.out.println(target);
-            }
             if (snapshots.size() > MAX_SNAPSHOT_SIZE) {
                 target = snapshots.poll();
             }
@@ -56,7 +53,7 @@ public class HoundBehavior extends BehaviorAdapter {
         }
 
         if (target != null) {
-            Vector2 movement = target.cpy().sub(hound.getPosition()).scl(0.2f);
+            Vector2 movement = target.cpy().sub(hound.getPosition()).scl(0.7f * (snapshots.size() + 1f));
             hound.move(movement.x * delta, movement.y * delta);
         }
 
@@ -67,11 +64,11 @@ public class HoundBehavior extends BehaviorAdapter {
 
         // update ambient light depending on distance
         float distance = player.getPosition().cpy().sub(hound.getPosition()).len();
-        float ratio = clamp(250f / distance, 0.7f, 2f);
+        float ratio = clamp(750f / distance, 0.6f, 2f);
         lightingManager.setAmbientLight(Colors.darken(com.punchbrain.awake.Colors.BACKGROUND, ratio));
     }
 
     private boolean readyToPoll(GameObject hound) {
-        return target == null || target.cpy().sub(hound.getPosition()).len() < 64f;
+        return target == null || target.cpy().sub(hound.getPosition()).len() < 396f;
     }
 }

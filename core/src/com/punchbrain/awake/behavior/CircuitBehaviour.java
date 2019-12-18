@@ -23,7 +23,6 @@ public class CircuitBehaviour extends BehaviorAdapter {
     public CircuitBehaviour(Circuit circuit, GameContext2D context){
         this.circuit = circuit;
         this.context = context;
-        this.lampLight = context.getLightingManager().createPointLight(200, Color.GOLD);
     }
 
     @Override
@@ -41,7 +40,6 @@ public class CircuitBehaviour extends BehaviorAdapter {
     @Override
     public void update(GameObject source, GameObject player, float delta) {
         if(PLAYER.isTypeOf(player)){
-            System.out.println(player.getZIndex());
             Rectangle playerRect = new Rectangle();
             playerRect.set(player.getLeft(), player.getTop(), player.getWidth(), player.getHeight());
             Rectangle circuitRect = new Rectangle();

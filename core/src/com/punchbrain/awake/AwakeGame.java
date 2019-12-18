@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.punchbrain.awake.assets.Assets;
 import com.punchbrain.awake.screens.LevelScreen;
+import com.punchbrain.awake.ui.Styles;
 import de.bitbrain.braingdx.BrainGdxGame;
 import de.bitbrain.braingdx.GameSettings;
 import de.bitbrain.braingdx.assets.GameAssetLoader;
@@ -45,6 +46,7 @@ public class AwakeGame extends BrainGdxGame {
 
    @Override
    protected AbstractScreen<?, ?> getInitialScreen() {
+      Styles.init();
       configureSettings();
       SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setLooping(true);
       SharedAssetManager.getInstance().get(DARK_AMBIENT_001, Music.class).setVolume(0.01f);

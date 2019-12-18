@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.punchbrain.awake.Colors;
 import com.punchbrain.awake.GameObjectType;
 import com.punchbrain.awake.animation.LampState;
 import com.punchbrain.awake.animation.PlayerDirection;
@@ -56,11 +57,11 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
          if(circuitFlipSwitch == null){
             circuitPairMap.put(circuitId, object);
          } else {
-            Light light = context.getLightingManager().createPointLight(0, Color.GOLD);
+            Light light = context.getLightingManager().createPointLight(0, Colors.LANTERN);
             context.getLightingManager().attach(light, object);
             object.setAttribute(LampState.class, LampState.ON);
             circuitFlipSwitch.setAttribute(LampState.class, LampState.ON);
-            Circuit circuit = new Circuit(object, circuitFlipSwitch, light);
+            Circuit circuit = new Circuit(object, circuitFlipSwitch, light, context.getAudioManager());
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, circuitFlipSwitch);
          }
@@ -71,7 +72,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
          if(circuitLamp == null){
             circuitPairMap.put(circuitId, object);
          } else {
-            Light light = context.getLightingManager().createPointLight(0, Color.GOLD);
+            Light light = context.getLightingManager().createPointLight(0, Colors.LANTERN);
             /*
             Tween.to(light, PointLight2DTween.DISTANCE, 0.9f)
                     .target(205f)
@@ -83,7 +84,7 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
             context.getLightingManager().attach(light, circuitLamp, true);
             object.setAttribute(LampState.class, LampState.ON);
             circuitLamp.setAttribute(LampState.class, LampState.ON);
-            Circuit circuit = new Circuit(circuitLamp, object, light);
+            Circuit circuit = new Circuit(circuitLamp, object, light, context.getAudioManager());
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, object);
          }

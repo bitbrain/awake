@@ -27,6 +27,7 @@ import com.punchbrain.awake.input.LevelKeyboardInputAdapter;
 import com.punchbrain.awake.model.Circuit;
 import com.punchbrain.awake.tmx.CircuitInitialiser;
 import com.punchbrain.awake.tmx.PlayerInitialiser;
+import com.punchbrain.awake.ui.Toast;
 import de.bitbrain.braingdx.assets.SharedAssetManager;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.graphics.animation.AnimationRenderer;
@@ -68,6 +69,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
    @Override
    protected void onCreate(GameContext2D context) {
+      Toast.getInstance().init(context.getStage());
       this.context = context;
       context.getScreenTransitions().in(0.5f);
       context.setBackgroundColor(Colors.BACKGROUND);
@@ -78,6 +80,8 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
       setupInput(context.getInputManager());
 
       bootstrap(context, tmxContext);
+
+      Toast.getInstance().doToast(tmxContext.getTiledMap().getProperties().get("name", "", String.class));
    }
 
    private TiledMapContext setupTiled(GameContext2D context) {
@@ -96,7 +100,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
     }
 
     private void setupInput(InputManager inputManager) {
-        inputManager.register(new LevelControllerInputAdapter(this));
+        inputManager.register(new LevelControllerInputAdapter(this, playerInitialiser.getPlayer()));
         inputManager.register(new LevelKeyboardInputAdapter(this, playerInitialiser.getPlayer()));
     }
 
@@ -130,7 +134,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
                 }));
         LightingConfig lightingConfig = new LightingConfig();
         lightingConfig.rays(200);
-        lightingConfig.blur(false);
+        lightingConfig.blur(true);
         context.getLightingManager().setConfig(lightingConfig);
         context.getLightingManager().setAmbientLight(Colors.BACKGROUND);
 
