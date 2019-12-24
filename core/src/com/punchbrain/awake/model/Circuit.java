@@ -9,7 +9,7 @@ import de.bitbrain.braingdx.audio.AudioManager;
 import de.bitbrain.braingdx.world.GameObject;
 
 public class Circuit {
-    enum State {OFF, ON, BROKEN}
+    public enum State {OFF, ON, BROKEN}
 
     private final float lightRadius = 200;
 
@@ -18,7 +18,7 @@ public class Circuit {
     private final Light lightObject;
     private final AudioManager audioManager;
     private float deltaAccumulator = 0;
-    private float deltaLimit = 30;
+    private float deltaLimit = 10;
 
     private State state = State.OFF;
 
@@ -29,6 +29,9 @@ public class Circuit {
         this.audioManager = audioManager;
     }
 
+    public float getLightRadius(){
+        return this.state == State.ON ? this.lightRadius : 0;
+    }
 
     public Circuit updatePassiveBehaviour(float delta) {
         updateState(delta);
@@ -47,6 +50,11 @@ public class Circuit {
         return this;
     }
 
+    public State getState(){
+        return this.state;
+    }
+
+    //TODO: make this a more general state?
     private void updateAnimationState() {
         if (this.state == State.ON) {
             this.flipSwitch.setAttribute(LampState.class, LampState.ON);

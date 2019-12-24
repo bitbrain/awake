@@ -7,11 +7,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.punchbrain.awake.GameObjectType;
 import com.punchbrain.awake.behavior.HoundBehavior;
+import com.punchbrain.awake.model.map.CircuitModelMap;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.tmx.TiledMapContext;
 import de.bitbrain.braingdx.world.GameObject;
 
 public class LevelStageBootstrap implements LevelBootstrap {
+
+    CircuitModelMap circuitModelMap;
 
     @Override
     public void boostrap(final GameContext2D gameContext2D, final TiledMapContext tiledMapContext) {
@@ -32,10 +35,14 @@ public class LevelStageBootstrap implements LevelBootstrap {
             }
         }
         if (player != null) {
-            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player, gameContext2D.getEventManager(), gameContext2D.getLightingManager()), hound);
+            gameContext2D.getBehaviorManager().apply(new HoundBehavior(player, gameContext2D.getEventManager(), gameContext2D.getLightingManager(), circuitModelMap), hound);
         } else {
             throw new GdxRuntimeException("Unable to initialise hound! Player not found");
         }
+    }
+
+    public void setCircuitModelMap(CircuitModelMap circuitModelMap) {
+        this.circuitModelMap = circuitModelMap;
     }
 
     @Override

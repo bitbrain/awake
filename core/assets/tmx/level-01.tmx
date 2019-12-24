@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="124" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="40">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="left-up" width="124" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="44">
  <properties>
   <property name="name" value="The Descent"/>
  </properties>
@@ -8,12 +8,12 @@
  </tileset>
  <layer id="6" name="Tile Layer 1" width="124" height="12">
   <data encoding="base64" compression="zlib">
-   eAHt17EVACAIQ8GsIM7mCI7g/mrPBMkvaCy5II+SNKmYHhTWMdZ/rvHO+t/wxpt97psB5tvXtptbvPHucsGbRy4W91jUPbbxxpsM2GbgPNtBxfTgAntXbrs=
+   eJzt0UENACAMALFZALQhAQn4BxOQJeuj/0uuR8SgjJ6gAb/xG7/xG7/xu6KZoIF/VoIG/OaNfTXKOHtXbrs=
   </data>
  </layer>
  <layer id="7" name="Tile Layer 2" width="124" height="12" offsetx="0" offsety="16">
   <data encoding="base64" compression="zlib">
-   eAHt0TENADAMA8FQCX+STRl4tq5SNy+535nZ4N/EKxBIWv+N1yGgd0fH9Aq9U6mOnd4dHdMr9E6lOnZ6d3R0BQECBAgQIECAQIfAA9aYCQc=
+   eJzt0UENADAMA7FQKX+So9Dn1NjSIbhJMou4YfPa7zv87uJ3F7+7+N3FbwAA+McD1pgJBw==
   </data>
  </layer>
  <objectgroup id="2" name="collisions">
@@ -61,6 +61,30 @@
    <properties>
     <property name="physics.enabled" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="40" type="circuit_lamp" x="167.25" y="266.25">
+   <properties>
+    <property name="circuit_id" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" type="circuit_flip_switch" x="220" y="331">
+   <properties>
+    <property name="circuit_id" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="42" type="circuit_lamp" x="544.25" y="328.25">
+   <properties>
+    <property name="circuit_id" value="2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="43" type="circuit_flip_switch" x="606" y="325">
+   <properties>
+    <property name="circuit_id" value="2"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

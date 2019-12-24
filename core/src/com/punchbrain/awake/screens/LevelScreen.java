@@ -25,6 +25,7 @@ import com.punchbrain.awake.event.TeleportEventListener;
 import com.punchbrain.awake.input.LevelControllerInputAdapter;
 import com.punchbrain.awake.input.LevelKeyboardInputAdapter;
 import com.punchbrain.awake.model.Circuit;
+import com.punchbrain.awake.model.map.CircuitModelMap;
 import com.punchbrain.awake.tmx.CircuitInitialiser;
 import com.punchbrain.awake.tmx.PlayerInitialiser;
 import com.punchbrain.awake.ui.Toast;
@@ -48,6 +49,7 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
     private final String tiledMapFile;
     private GameContext2D context;
     private CircuitInitialiser circuitInitialiser;
+    private CircuitModelMap circuitModelMap;
 
 
     public LevelScreen(AwakeGame game, String tiledMapFile, String targetSpawnId) {
@@ -67,32 +69,34 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
     }
 
 
-   @Override
-   protected void onCreate(GameContext2D context) {
-      Toast.getInstance().init(context.getStage());
-      this.context = context;
-      context.getScreenTransitions().in(0.5f);
-      context.setBackgroundColor(Colors.BACKGROUND);
-      setupGraphics(context);
-      setupEvents(context);
-      TiledMapContext tmxContext = setupTiled(context);
-      setupPhysics(context);
-      setupInput(context.getInputManager());
+    @Override
+    protected void onCreate(GameContext2D context) {
+        Toast.getInstance().init(context.getStage());
+        this.context = context;
+        context.getScreenTransitions().in(0.5f);
+        context.setBackgroundColor(Colors.BACKGROUND);
+        setupGraphics(context);
+        setupEvents(context);
+        TiledMapContext tmxContext = setupTiled(context);
+        setupPhysics(context);
+        setupInput(context.getInputManager());
 
-      bootstrap(context, tmxContext);
+        bootstrap(context, tmxContext);
 
-      Toast.getInstance().doToast(tmxContext.getTiledMap().getProperties().get("name", "", String.class));
-   }
+        Toast.getInstance().doToast(tmxContext.getTiledMap().getProperties().get("name", "", String.class));
+    }
 
-   private TiledMapContext setupTiled(GameContext2D context) {
-      TiledMapContext tmxContext = loadTiledMap(tiledMapFile, context);
-      tmxContext.setEventFactory(new AwakeEventFactory());
-      return tmxContext;
-   }
+    private TiledMapContext setupTiled(GameContext2D context) {
+        TiledMapContext tmxContext = loadTiledMap(tiledMapFile, context);
+        tmxContext.setEventFactory(new AwakeEventFactory());
+        return tmxContext;
+    }
 
     private void setupEvents(GameContext2D context) {
         this.playerInitialiser = new PlayerInitialiser(context, targetSpawnId);
-        this.circuitInitialiser = new CircuitInitialiser(context);
+        circuitModelMap = new CircuitModelMap();
+        this.circuitInitialiser = new CircuitInitialiser(context, circuitModelMap);
+        //TODO: add a misc map in context of class to object for stuff like object to model map
         context.getEventManager().register(playerInitialiser, OnLoadGameObjectEvent.class);
         context.getEventManager().register(circuitInitialiser, OnLoadGameObjectEvent.class);
         context.getEventManager().register(new TeleportEventListener(context, this), TeleportEvent.class);
@@ -142,15 +146,16 @@ public class LevelScreen extends BrainGdxScreen2D<AwakeGame> {
 
     }
 
-   private void setupPhysics(GameContext2D context) {
-      context.getPhysicsManager().setGravity(0f, -98);
-   }
+    private void setupPhysics(GameContext2D context) {
+        context.getPhysicsManager().setGravity(0f, -98);
+    }
 
-   private void bootstrap(final GameContext2D context, final TiledMapContext tmxContext) {
-      for (LevelBootstrap bootstrap : BootstrapFactory.getBoostraps()) {
-         if (bootstrap.isApplicable(tiledMapFile)) {
-            bootstrap.boostrap(context, tmxContext);
-         }
-      }
-   }
+    private void bootstrap(final GameContext2D context, final TiledMapContext tmxContext) {
+        for (LevelBootstrap bootstrap : BootstrapFactory.getBoostraps()) {
+            if (bootstrap.isApplicable(tiledMapFile)) {
+                bootstrap.setCircuitModelMap(circuitModelMap);
+                bootstrap.boostrap(context, tmxContext);
+            }
+        }
+    }
 }

@@ -20,6 +20,7 @@ import com.punchbrain.awake.behavior.CircuitBehaviour;
 import com.punchbrain.awake.behavior.PlayerUpdateBehavior;
 import com.punchbrain.awake.model.Circuit;
 import com.punchbrain.awake.model.Player;
+import com.punchbrain.awake.model.map.CircuitModelMap;
 import de.bitbrain.braingdx.context.GameContext2D;
 import de.bitbrain.braingdx.event.GameEventListener;
 import de.bitbrain.braingdx.tmx.TiledMapEvents;
@@ -37,13 +38,15 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
 
    private final GameContext2D context;
    Map<String, GameObject> circuitPairMap;
+   CircuitModelMap circuitModelMap;
 
    private GameObject targetTeleport;
    private GameObject playerObject;
 
 
-   public CircuitInitialiser(GameContext2D context) {
+   public CircuitInitialiser(GameContext2D context, CircuitModelMap modelMap) {
       this.context = context;
+      this.circuitModelMap = modelMap;
       this.circuitPairMap = new HashMap<>();
    }
 
@@ -62,6 +65,8 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
             object.setAttribute(LampState.class, LampState.ON);
             circuitFlipSwitch.setAttribute(LampState.class, LampState.ON);
             Circuit circuit = new Circuit(object, circuitFlipSwitch, light, context.getAudioManager());
+            circuitModelMap.registerLamp(object, circuit);
+            circuitModelMap.registerFlipSwitch(circuitFlipSwitch, circuit);
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
             context.getBehaviorManager().apply(behavior, circuitFlipSwitch);
          }
@@ -86,6 +91,8 @@ public class CircuitInitialiser implements GameEventListener<TiledMapEvents.OnLo
             circuitLamp.setAttribute(LampState.class, LampState.ON);
             Circuit circuit = new Circuit(circuitLamp, object, light, context.getAudioManager());
             CircuitBehaviour behavior = new CircuitBehaviour(circuit, context);
+            circuitModelMap.registerLamp(circuitLamp, circuit);
+            circuitModelMap.registerFlipSwitch(object, circuit);
             context.getBehaviorManager().apply(behavior, object);
          }
       }
